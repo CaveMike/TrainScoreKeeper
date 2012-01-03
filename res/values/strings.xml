@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Train Score Keeper</string>
+    <string name="app_short_name">Score Keeper</string>
+
+    <!--  Dialog prompt and buttons for starting a new game -->
+    <string name="new_game_prompt">Are you sure you want to start a new game?  All existing data will be lost.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!--  Menu items -->
+    <string name="new_game">New Game</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="help">Help</string>
+
+    <!--  History text -->
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="yellow">Yellow</string>
+    <string name="black">Black</string>
+        
+	<string name="history_entry" formatted="false">%1$s %2$s for a new total of %3$d.\n</string>
+	
+	<string name="history_train" >built a %1$s train cars worth %2$d points</string>
+	<string name="history_contract_completed">completed a contract worth %2$d points</string>
+	<string name="history_contract_missed">failed to complete a contract worth %2$d points</string>
+	<string name="history_bonus">received %1$s worth %2$d points</string>
+	<string name="history_station">had %1$s stations remaining worth %2$d points</string>
+    <string name="history_longest_train">Longest Train</string>
+            
+    <!--  Button text -->
+    <string name="button_trains">%1$d trains (+%2$d)</string>
+    <string name="button_contracts_complete">(+%2$d)</string>
+    <string name="button_contracts_missed">(%2$d)</string>
+    <string name="button_train_stations">%1$d stations (+%2$d)</string>
+    <string name="button_longest_train">Longest Train (+%2$d)</string>
+        
+</resources>

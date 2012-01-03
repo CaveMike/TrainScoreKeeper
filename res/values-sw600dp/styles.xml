@@ -1,0 +1,3 @@
+<resources>
+    <style name="PlayerTableText" parent="@android:style/TextAppearance.Large"></style>
+</resources>

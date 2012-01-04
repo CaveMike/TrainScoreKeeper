@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Train Score Keeper</string>
-    <string name="app_short_name">Score Keeper</string>
+    <string name="app_short_name">Train Score Keeper</string>
+
+    <!-- EULA -->
+    <string name="about_title">About</string>
+    <string name="about_positive">OK</string>
+    <string name="about_neutral">Market</string>
+    <string name="about_negative">Web</string>
+
+    <!-- EULA -->
+    <string name="eula_title">License</string>
+    <string name="eula_accept">Accept</string>
+    <string name="eula_refuse">Refuse</string>
 
     <!--  Dialog prompt and buttons for starting a new game -->
     <string name="new_game_prompt">Are you sure you want to start a new game?  All existing data will be lost.</string>

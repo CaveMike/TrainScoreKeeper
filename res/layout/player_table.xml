@@ -2,7 +2,7 @@
 <TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tableLayoutColors"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
 
     <TableRow >
@@ -41,7 +41,7 @@
         <ToggleButton
             android:id="@+id/buttonRed"
             style="@style/PlayerTableText"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/red_button"
             android:textColor="@color/White"
             android:textOff="Red"
@@ -71,7 +71,7 @@
         <ToggleButton
             android:id="@+id/buttonGreen"
             style="@style/PlayerTableText"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/green_button"
             android:textColor="@color/White"
             android:textOff="Green"
@@ -101,7 +101,7 @@
         <ToggleButton
             android:id="@+id/buttonBlue"
             style="@style/PlayerTableText"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/blue_button"
             android:textColor="@color/White"
             android:textOff="Blue"
@@ -131,7 +131,7 @@
         <ToggleButton
             android:id="@+id/buttonYellow"
             style="@style/PlayerTableText"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/yellow_button"
             android:textColor="@color/Black"
             android:textOff="Yellow"
@@ -161,7 +161,7 @@
         <ToggleButton
             android:id="@+id/buttonBlack"
             style="@style/PlayerTableText"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:background="@drawable/black_button"
             android:textColor="@color/White"
             android:textOff="Black"

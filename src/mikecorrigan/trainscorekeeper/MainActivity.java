@@ -1,4 +1,17 @@
-package train.scorekeeper;
+//   Copyright 2012 Michael T. Corrigan
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//       http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+package mikecorrigan.trainscorekeeper;
 
 import java.security.InvalidParameterException;
 import java.util.HashMap;
@@ -7,14 +20,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import train.scorekeeper.ScoreSpec.TYPE;
+import mikecorrigan.trainscorekeeper.ScoreSpec.TYPE;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -66,7 +81,7 @@ public class MainActivity extends Activity implements Rules {
 	final private String FIELD_DESCRIPTION = "description";
 	final private String FIELD_COLOR = "color";
 	final private String CREATE_TABLE = "CREATE TABLE " + TABLE + " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_TYPE + " INTEGER, " + FIELD_VALUE + " INTEGER, " + FIELD_DESCRIPTION + " TEXT, " + FIELD_COLOR + " INTEGER);";
-	final private String DROP_DATABASE = "DROP TABLE " + TABLE;
+	final private String DROP_TABLE = "DROP TABLE " + TABLE;
 
 	// Bundle
 	final private String BUNDLE_SELECTED_COLOR = "selectedColor";
@@ -283,6 +298,8 @@ public class MainActivity extends Activity implements Rules {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		Eula.show(this);
+
 		scoreEvents = new LinkedList<ScoreEvent>();
 
 		colorStrings = new HashMap<Integer, String>();
@@ -441,6 +458,7 @@ public class MainActivity extends Activity implements Rules {
 			return true;
 		case R.id.help:
 			help();
+			About.show(this);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -491,25 +509,38 @@ public class MainActivity extends Activity implements Rules {
 	}
 
 	private void write() {
+		//Log.v(TAG, "write");
+
+		// Remove any undo events.
+		if (lastScoreEvent != scoreEvents.size()) {
+			scoreEvents = scoreEvents.subList(0, lastScoreEvent);
+		}
+
+		SQLiteDatabase database;
+
 		try {
-			// Remove any undo events.
-			if (lastScoreEvent != scoreEvents.size()) {
-				scoreEvents = scoreEvents.subList(0, lastScoreEvent);
-			}
-
-			SQLiteDatabase database;
-
+			//Log.v(TAG, "write open");
 			database = openOrCreateDatabase(DATABASE, SQLiteDatabase.CREATE_IF_NECESSARY, null);
 			database.setLocale(Locale.getDefault());
 			database.setLockingEnabled(true);
 			database.setVersion(1);
+			//Log.v(TAG, "write complete");
+		} catch (SQLiteException e) {
+			//Log.v(TAG, "Failed to open saved settings.");
+			e.printStackTrace();
+			return;
+		}
 
-			try {
-				database.execSQL(DROP_DATABASE);
-			} catch (Throwable e) {
-				//e.printStackTrace();
-			}
+		try {
+			//Log.v(TAG, "write drop table");
+			database.execSQL(DROP_TABLE);
+		} catch (SQLiteException e) {
+			// This is fine if the table does not exist.
+			//Log.i(TAG, "Saved game does not exist.");
+		}
 
+		try {
+			//Log.v(TAG, "write create table");
 			database.execSQL(CREATE_TABLE);
 
 			for (ScoreEvent scoreEvent : scoreEvents) {
@@ -520,26 +551,39 @@ public class MainActivity extends Activity implements Rules {
 				values.put(FIELD_DESCRIPTION, scoreEvent.getParam());
 				values.put(FIELD_COLOR, scoreEvent.getColor());
 
-				long id = database.insertOrThrow(TABLE, null, values);
+				//Log.v(TAG, "write event=" + values);
+				database.insertOrThrow(TABLE, null, values);
 			}
-
-			database.close();
-		} catch (Throwable e) {
+		} catch (SQLiteException e) {
+			Log.e(TAG, "Failed to write saved game.");
 			e.printStackTrace();
+		} finally {
+			//Log.v(TAG, "write close");
+			database.close();
 		}
 	}
 
 	private void read() {
+		//Log.v(TAG, "read");
+
+		scoreEvents.clear();
+		lastScoreEvent = 0;
+
+		SQLiteDatabase database = null;
+
 		try {
-			scoreEvents.clear();
-
-			SQLiteDatabase database;
-
+			//Log.v(TAG, "read open");
 			database = openOrCreateDatabase(DATABASE, SQLiteDatabase.OPEN_READONLY, null);
 			database.setLocale(Locale.getDefault());
 			database.setLockingEnabled(true);
 			database.setVersion(1);
+			//Log.v(TAG, "read open complete");
+		} catch (SQLiteException e) {
+			Log.e(TAG, "Failed to open saved settings.");
+			return;
+		}
 
+		try {
 			Cursor c = database.query(TABLE, null, null, null, null, null, null);
 			startManagingCursor(c);
 
@@ -551,17 +595,20 @@ public class MainActivity extends Activity implements Rules {
 				int color = c.getInt(4);
 
 				ScoreEvent scoreEvent = new ScoreEvent(color, new ScoreSpec(type, value, description));
+				//Log.v(TAG, "read event=" + scoreEvent);
 				scoreEvents.add(scoreEvent);
 				c.moveToNext();
 			}
 
 			stopManagingCursor(c);
 
-			database.close();
-
 			lastScoreEvent = scoreEvents.size();
-		} catch (Throwable e) {
+		} catch (SQLiteException e) {
+			Log.e(TAG, "Failed to read saved game.");
 			e.printStackTrace();
+		} finally {
+			//Log.v(TAG, "read close");
+			database.close();
 		}
 	}
 }

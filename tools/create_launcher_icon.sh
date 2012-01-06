@@ -1,5 +1,5 @@
-set -x
-set -e
+#set -x
+#set -e
 
 function export_image()
 {
@@ -17,14 +17,13 @@ if [ -z $1 ]; then
 fi
    
 if [ -e $2 ]; then
-   bname=`basename $1 .svg`
-   out="ic_menu_${bname}.png"
+   out="ic_launcher.png"
 else
    out=$2
 fi
-echo $out
 
-export_image $1 "./out/res/drawable-ldpi/" $out "24"
-export_image $1 "./out/res/drawable-mdpi/" $out "32"
-export_image $1 "./out/res/drawable-hdpi/" $out "48"
-export_image $1 "./out/res/drawable-xhdpi/" $out "96"
+export_image $1 "../res/drawable-ldpi/" $out "36"
+export_image $1 "../res/drawable-mdpi/" $out "48"
+export_image $1 "../res/drawable-hdpi/" $out "72"
+export_image $1 "../res/drawable-xhdpi/" $out "96"
+export_image $1 "../release/" $out "512"

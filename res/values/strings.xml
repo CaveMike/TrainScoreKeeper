@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Train Score Keeper</string>
-    <string name="app_short_name">Train Score Keeper</string>
+    <string name="app_name">Ticket to Ride Score Keeper</string>
+    <string name="app_short_name">Score Keeper</string>
 
     <!-- EULA -->
     <string name="about_title">About</string>

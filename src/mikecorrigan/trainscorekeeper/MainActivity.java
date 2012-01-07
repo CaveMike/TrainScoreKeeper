@@ -14,6 +14,7 @@
 package mikecorrigan.trainscorekeeper;
 
 import java.security.InvalidParameterException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -129,7 +130,7 @@ public class MainActivity extends Activity implements Rules {
 	}
 
 	private void help() {
-		//TODO:
+		About.show(this);
 	}
 
 	private void updateUi() {
@@ -458,7 +459,6 @@ public class MainActivity extends Activity implements Rules {
 			return true;
 		case R.id.help:
 			help();
-			About.show(this);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -610,5 +610,43 @@ public class MainActivity extends Activity implements Rules {
 			//Log.v(TAG, "read close");
 			database.close();
 		}
+	}
+
+	private void addTestData()
+	{
+		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 7, "4")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 10, "10")));
+
+		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 10, "5")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 16, "16")));
+
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 7, "4")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 9, "9")));
+
+		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 15, "6")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 6, "6")));
+
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 7, "4")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 12, "12")));
+
+		Collections.shuffle(scoreEvents);
+		lastScoreEvent = scoreEvents.size();
+
+		updateScores();
+		updateUi();
 	}
 }

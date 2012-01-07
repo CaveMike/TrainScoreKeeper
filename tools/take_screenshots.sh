@@ -21,7 +21,7 @@ function take_sceenshot()
   # $3 file out
   # $4 width
   # $5 height
- 
+
    read -n1 -p "In ${1} mode (Y/n)?" response
    echo ""
    [[ $response != [nN] ]] && {
@@ -41,7 +41,7 @@ if [ $? == 1 ]; then
       screenshot2 raw_xoom_land.png
       inkscape raw_xoom_land.png --export-png=xoom_land.png --export-area=0:80:1280:800
    fi
-   
+
    YES_no "Portrait"
    if [ $? == 1 ]; then
       screenshot2 -l raw_xoom_port.png

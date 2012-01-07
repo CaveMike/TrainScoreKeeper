@@ -9,13 +9,14 @@ function export_image()
    # $4 height/width
 
    mkdir -p $2
-   inkscape $1 --export-png="${2}${3}" --export-width=$4 --export-height=$4 --export-background-opacity=0
+   inkscape $1 --export-png="/tmp/${3}" --export-width=$4 --export-height=$4 --export-background-opacity=0
+   pngcrush "/tmp/${3}" "${2}${3}"
 }
 
 if [ -z $1 ]; then
    exit -1
 fi
-   
+
 if [ -e $2 ]; then
    out="ic_launcher.png"
 else

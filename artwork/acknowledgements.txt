@@ -1,1 +1,9 @@
-Retro_locomotive by http://openclipart.org/user-detail/rones from http://openclipart.org/detail/70039/retro-locomotive-by-rones.
+Retro_locomotive.svg:
+  By rones at http://openclipart.org/user-detail/rones from http://openclipart.org/detail/70039/retro-locomotive-by-rones.
+
+Menu icons:
+  By Olof Brickarp from http://www.yay.se/resources/android-native-icons.
+
+Tools used:
+   Inkscape   http://inkscape.org/
+   pngcrush   http://pmt.sourceforge.net/pngcrush/

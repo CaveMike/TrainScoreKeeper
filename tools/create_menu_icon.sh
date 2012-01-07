@@ -19,7 +19,7 @@ fi
 
 if [ -e $2 ]; then
    bname=`basename $1 .svg`
-   out="ic_menu_${bname}.png"
+   out="${bname}.png"
 else
    out=$2
 fi

@@ -5,20 +5,20 @@ Ticket to Ride Score Keeper
 ----
 Description (4000):
 ----
-Fans of the board game, Ticket to Ride, will want this app to simplify and automate scoring.  No more recounting when a player knocks the score pieces.
+Fans of the board game, Ticket to Ride, will want this app to simplify and automate scoring.  No more recounting when a player bumps the scoring pieces.
 
 Features include:
    Supports all Ticket to Ride board games (USA, Europe, Nordic Countries, Märklin, Asia, and India).
    Supports all Android tablets and phones.
    Optimized user-interface that makes scoring a snap.  Only two touches needed for any action.
    Saves as you play even if you restart your device.
-   Supports full undo and redo; you never have to worry about making a mistake.
+   Supports full undo and redo.  You never have to worry about making a mistake.
 
 Full source code available under the Apache License, Version 2.0 at:
     https://github.com/CaveMike/TrainScoreKeeper
 
 NOTE:
-   This is not a game.  It is a utility that requires a physical Ticket to Ride board game.
+This is not a game.  It is a utility that requires a physical Ticket to Ride board game.
 
 DISCLAIMER:
 This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride USA, Europe, Nordic Countries, Märklin, Asia, and India as well as  Days of Wonder are trademarks or registered trademarks of Days of Wonder, Inc.  Days of Wonder neither warrants nor represents this application and is not responsibile for any losses or damages related to use of this application.
@@ -32,3 +32,7 @@ Initial release tested on:
 Promo Text (80):
 ----
 ----
+From your Android device:
+   market://details?id=mikecorrigan.trainscorekeeper
+From you PC:
+   https://market.android.com/details?id=mikecorrigan.trainscorekeeper

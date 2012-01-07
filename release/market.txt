@@ -7,9 +7,6 @@ Description (4000):
 ----
 Fans of the board game, Ticket to Ride, will want this app to simplify and automate scoring.  No more recounting when a player knocks the score pieces.
 
-NOTE:
-   This is not a game.  It is a utility that requires a physical Ticket to Ride board game.
-
 Features include:
    Supports all Ticket to Ride board games (USA, Europe, Nordic Countries, Märklin, Asia, and India).
    Supports all Android tablets and phones.
@@ -19,6 +16,9 @@ Features include:
 
 Full source code available under the Apache License, Version 2.0 at:
     https://github.com/CaveMike/TrainScoreKeeper
+
+NOTE:
+   This is not a game.  It is a utility that requires a physical Ticket to Ride board game.
 
 DISCLAIMER:
 This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride USA, Europe, Nordic Countries, Märklin, Asia, and India as well as  Days of Wonder are trademarks or registered trademarks of Days of Wonder, Inc.  Days of Wonder neither warrants nor represents this application and is not responsibile for any losses or damages related to use of this application.

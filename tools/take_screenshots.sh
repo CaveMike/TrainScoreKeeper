@@ -23,15 +23,17 @@ if [ $? == 1 ]; then
    YES_no "Landscape"
    if [ $? == 1 ]; then
       screenshot2 /tmp/raw_xoom_land.png
-      inkscape /tmp/raw_xoom_land.png --export-png=/tmp/xoom_land.png --export-area=0:80:1280:800
-      pngcrush /tmp/xoom_land.png xoom_land.png
+      inkscape /tmp/raw_xoom_land.png --export-png=/tmp/trimmed_xoom_land.png --export-area=0:80:1280:800
+      convert -resize 480x320 /tmp/trimmed_xoom_land.png /tmp/scaled_xoom_land.png
+      pngcrush /tmp/scaled_xoom_land.png xoom_land.png
    fi
 
    YES_no "Portrait"
    if [ $? == 1 ]; then
       screenshot2 -l /tmp/raw_xoom_port.png
-      inkscape /tmp/raw_xoom_port.png --export-png=/tmp/xoom_port.png --export-area=0:80:800:1280
-      pngcrush /tmp/xoom_land.png xoom_port.png
+      inkscape /tmp/raw_xoom_port.png --export-png=/tmp/trimmed_xoom_port.png --export-area=0:80:800:1280
+      convert -resize 480x320 /tmp/trimmed_xoom_port.png /tmp/scaled_xoom_port.png
+      pngcrush /tmp/scaled_xoom_port.png xoom_port.png
    fi
 fi
 
@@ -40,15 +42,17 @@ if [ $? == 1 ]; then
    YES_no "Portrait"
    if [ $? == 1 ]; then
       screenshot2 /tmp/raw_bionic_port.png
-      inkscape /tmp/raw_bionic_port.png --export-png=/tmp/bionic_port.png --export-area=0:0:544:920
-      pngcrush /tmp/bionic_port.png bionic_port.png
+      inkscape /tmp/raw_bionic_port.png --export-png=/tmp/trimmed_bionic_port.png --export-area=0:0:544:920
+      convert -resize 320x480 /tmp/trimmed_bionic_port.png /tmp/scaled_bionic_port.png
+      pngcrush /tmp/scaled_bionic_port.png bionic_port.png
    fi
 
    YES_no "Landscape"
    if [ $? == 1 ]; then
       screenshot2 -l /tmp/raw_bionic_land.png
-      inkscape /tmp/raw_bionic_land.png --export-png=/tmp/bionic_land.png --export-area=0:0:960:504
-      pngcrush /tmp/bionic_land.png bionic_land.png
+      inkscape /tmp/raw_bionic_land.png --export-png=/tmp/trimmed_bionic_land.png --export-area=0:0:960:504
+      convert -resize 480x320 /tmp/trimmed_bionic_land.png /tmp/scaled_bionic_land.png
+      pngcrush /tmp/scaled_bionic_land.png bionic_land.png
    fi
 fi
 

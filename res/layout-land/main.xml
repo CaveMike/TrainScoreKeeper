@@ -1,45 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="horizontal">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
 
-	<LinearLayout
-		android:id="@+id/linearLayoutLeft"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_weight="3"
-		android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayoutLeft"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3"
+        android:orientation="vertical" >
 
-		<include layout="@layout/player_table"/>
+        <include layout="@layout/player_table" />
 
-		<CheckBox
-			android:id="@+id/buttonLastTurnComplete"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Last Turn Complete"/>
+        <CheckBox
+            android:id="@+id/buttonLastTurnComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Turn Complete" />
 
-		<TextView
-			android:id="@+id/historyTitle"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="History"/>
+        <TextView
+            android:id="@+id/historyTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="History"
+            android:visibility="gone" />
 
-		<TextView
-			android:id="@+id/history"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text=""/>
-	</LinearLayout>
+        <TextView
+            android:id="@+id/history"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:visibility="gone" />
+    </LinearLayout>
 
-	<LinearLayout
-		android:id="@+id/linearLayoutRight"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_weight="2"
-		android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/linearLayoutRight"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:orientation="vertical" >
 
-		<include layout="@layout/score_panel"/>
-	</LinearLayout>
+        <include layout="@layout/score_panel" />
+    </LinearLayout>
+
 </LinearLayout>

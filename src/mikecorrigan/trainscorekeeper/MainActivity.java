@@ -299,7 +299,7 @@ public class MainActivity extends Activity implements Rules {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		Eula.show(this);
+		//Eula.show(this);
 
 		scoreEvents = new LinkedList<ScoreEvent>();
 

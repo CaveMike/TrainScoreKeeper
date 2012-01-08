@@ -1,51 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--  Notes to translator:
+        1. 'Ticket to Ride' is a product name and should not be translated.  'Score Keeper'
+           should be translated.
+
+        2. Only text in the contents of <string> and <item> should be translated.  Ignore text in
+           comments, quotes, or the xml itself.
+
+        3. Variable insertion:
+           When variable text is inserted in a string, it is preceeded with a %.
+           For example %1$s.
+           The number after the % sign is the order of the variables.
+           Typically these start at 1 and increase.  However, if you need to reorder
+           the variables you can.
+           The letter after the $ sign indicates the type of variable.  An 's'
+           indicates a text string.  A 'd' indicates a number.
+
+        4. Plurals:
+           Plurals are indicated with a <plural> tag.  Each string needs to be translated
+           individually.  The number of items can be zero, one, two, few, many, and other.
+           See also: http://developer.android.com/guide/topics/resources/string-resource.html#Plurals)
+
+        See also: http://developer.android.com/guide/topics/resources/string-resource.html
+    -->
+
+    <!--  APP TITLES -->
     <string name="app_name">Ticket to Ride Score Keeper</string>
     <string name="app_short_name">Score Keeper</string>
 
-    <!-- EULA -->
+    <!-- ABOUT
+         This is used for the About box dialog that lists app details. -->
     <string name="about_title">About</string>
     <string name="about_positive">OK</string>
     <string name="about_neutral">Market</string>
     <string name="about_negative">Web</string>
 
-    <!-- EULA -->
+    <!-- EULA
+         The EULA is an end-user software license. -->
     <string name="eula_title">License</string>
     <string name="eula_accept">Accept</string>
     <string name="eula_refuse">Refuse</string>
 
-    <!--  Dialog prompt and buttons for starting a new game -->
+    <!--  Dialog prompt and buttons for quitting the current game and starting a new game. -->
     <string name="new_game_prompt">Are you sure you want to start a new game?  All existing data will be lost.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
-    <!--  Menu items -->
+    <!--  MENU ITEMS -->
     <string name="new_game">New Game</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
     <string name="help">Help</string>
 
-    <!--  History text -->
+    <!--  PLAYER'S COLOR.
+          These refer to a player by his color.  'Red' means 'the red player'. -->
     <string name="red">Red</string>
     <string name="green">Green</string>
     <string name="blue">Blue</string>
     <string name="yellow">Yellow</string>
     <string name="black">Black</string>
-        
-	<string name="history_entry" formatted="false">%1$s %2$s for a new total of %3$d.\n</string>
-	
-	<string name="history_train" >built a %1$s train cars worth %2$d points</string>
-	<string name="history_contract_completed">completed a contract worth %2$d points</string>
-	<string name="history_contract_missed">failed to complete a contract worth %2$d points</string>
-	<string name="history_bonus">received %1$s worth %2$d points</string>
-	<string name="history_station">had %1$s stations remaining worth %2$d points</string>
+
+    <!--  %1 is a player's color (listed above),
+          %2 is an action (listed below),
+          %3 is a player's score. -->
+    <string name="history_entry" formatted="false">%1$s %2$s for a new total of %3$d.\n</string>
+
+    <!--  ACTIONS -->
+
+    <!--  %1 is a number of train cars, %2 is a number of points. -->
+    <plurals name="history_train">
+        <item quantity="one" >built a train car worth %2$d</item>
+        <item quantity="other" >built %1$s train cars worth %2$d</item>
+    </plurals>
+
+    <!--  %1 is not used, %2 is a number of points. -->
+    <string name="history_contract_completed">completed a contract worth %2$d</string>
+
+    <!--  %1 is not used, %2 is a number of points. -->
+    <string name="history_contract_missed">failed to complete a contract worth %2$d</string>
+
+    <!--  %1 is a bonus listed below, %2 is a number of points. -->
+    <string name="history_bonus">received %1$s worth %2$d</string>
+
+    <!-- %1 is a number of stations, %2 is a number of points. -->
+    <plurals name="history_station">
+        <item quantity="one">had %1$s station remaining worth %2$d</item>
+        <item quantity="other">had %1$s stations remaining worth %2$d</item>
+    </plurals>
+
+    <!--  BONUSES -->
     <string name="history_longest_train">Longest Train</string>
-            
-    <!--  Button text -->
-    <string name="button_trains">%1$d trains (+%2$d)</string>
+
+    <!--  BUTTON TEXT -->
+    <!--  %1 is a number of train cars, %2 is a number of points. -->
+    <plurals name="button_trains">
+        <item quantity="one">%1$d train (+%2$d)</item>
+        <item quantity="other">%1$d trains (+%2$d)</item>
+    </plurals>
+
+    <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_contracts_complete">(+%2$d)</string>
+
+    <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_contracts_missed">(%2$d)</string>
-    <string name="button_train_stations">%1$d stations (+%2$d)</string>
+
+    <!--  %1 is a number of train stations, %2 is a number of points. -->
+    <plurals name="button_train_stations">
+        <item quantity="one">%1$d station (+%2$d)</item>
+        <item quantity="other">%1$d stations (+%2$d)</item>
+    </plurals>
+
+    <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_longest_train">Longest Train (+%2$d)</string>
-        
+
 </resources>

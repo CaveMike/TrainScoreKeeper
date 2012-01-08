@@ -26,6 +26,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -300,6 +301,7 @@ public class MainActivity extends Activity implements Rules {
 		setContentView(R.layout.main);
 
 		//Eula.show(this);
+		final Resources res = getResources();
 
 		scoreEvents = new LinkedList<ScoreEvent>();
 
@@ -334,7 +336,7 @@ public class MainActivity extends Activity implements Rules {
 		List<View> buttons = new LinkedList<View>();
 		for (int i = 0; i < trainPoints.length; i++) {
 			if (trainPoints[i] >= 0) {
-				String text = String.format(getString(R.string.button_trains), (i+1), trainPoints[i]);
+				String text = String.format(res.getQuantityString(R.plurals.button_trains, i+1), (i+1), trainPoints[i]);
 				Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.TRAIN, trainPoints[i],
 						Integer.toString(i+1)));
 				button.setOnClickListener(onScoreEvent);
@@ -378,7 +380,7 @@ public class MainActivity extends Activity implements Rules {
 		// Bonuses
 		buttons = new LinkedList<View>();
 		for (int i = 1; i <= numTrainStations; i++) {
-			String text = String.format(getString(R.string.button_train_stations), i, trainStationValue * i);
+			String text = String.format(res.getQuantityString(R.plurals.button_train_stations, i), i, trainStationValue * i);
 			Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.STATION, trainStationValue * i,
 					Integer.toString(i)));
 			button.setOnClickListener(onScoreEvent);

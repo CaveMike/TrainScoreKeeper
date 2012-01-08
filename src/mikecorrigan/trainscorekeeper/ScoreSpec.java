@@ -75,11 +75,11 @@ public class ScoreSpec {
 		String format = new String();
 
 		switch (type) {
-		case TRAIN: format = context.getString(R.string.history_train); break;
+		case TRAIN: format = context.getResources().getQuantityString(R.plurals.history_train, value); break;
 		case COMPLETED_CONTRACT: format = context.getString(R.string.history_contract_completed); break;
 		case MISSED_CONTRACT: format = context.getString(R.string.history_contract_missed); break;
 		case BONUS: format = context.getString(R.string.history_bonus); break;
-		case STATION: format = context.getString(R.string.history_station); break;
+		case STATION: format = context.getResources().getQuantityString(R.plurals.history_station, Integer.parseInt(param)); break;
 		}
 
 		return String.format(format, param, value);

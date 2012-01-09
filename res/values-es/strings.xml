@@ -8,7 +8,7 @@
            comments, quotes, or the xml itself.
 
         3. Variable insertion:
-           When variable text is inserted in a string, it is preceeded with a %.
+           When variable text is inserted in a string, it is preceded with a %.
            For example %1$s.
            The number after the % sign is the order of the variables.
            Typically these start at 1 and increase.  However, if you need to reorder

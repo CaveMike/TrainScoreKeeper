@@ -44,8 +44,8 @@
             android:layout_height="fill_parent"
             android:background="@drawable/red_button"
             android:textColor="@color/White"
-            android:textOff="Red"
-            android:textOn="Red" />
+            android:textOff=""
+            android:textOn="" />
 
         <TextView
             style="@style/PlayerTableText"
@@ -74,8 +74,8 @@
             android:layout_height="fill_parent"
             android:background="@drawable/green_button"
             android:textColor="@color/White"
-            android:textOff="Green"
-            android:textOn="Green" />
+            android:textOff=""
+            android:textOn="" />
 
         <TextView
             style="@style/PlayerTableText"
@@ -104,8 +104,8 @@
             android:layout_height="fill_parent"
             android:background="@drawable/blue_button"
             android:textColor="@color/White"
-            android:textOff="Blue"
-            android:textOn="Blue" />
+            android:textOff=""
+            android:textOn="" />
 
         <TextView
             style="@style/PlayerTableText"
@@ -134,8 +134,8 @@
             android:layout_height="fill_parent"
             android:background="@drawable/yellow_button"
             android:textColor="@color/Black"
-            android:textOff="Yellow"
-            android:textOn="Yellow" />
+            android:textOff=""
+            android:textOn="" />
 
         <TextView
             style="@style/PlayerTableText"
@@ -164,8 +164,8 @@
             android:layout_height="fill_parent"
             android:background="@drawable/black_button"
             android:textColor="@color/White"
-            android:textOff="Black"
-            android:textOn="Black" />
+            android:textOff=""
+            android:textOn="" />
 
         <TextView
             style="@style/PlayerTableText"

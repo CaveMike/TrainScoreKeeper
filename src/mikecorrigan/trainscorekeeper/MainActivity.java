@@ -41,7 +41,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -54,17 +53,19 @@ public class MainActivity extends Activity implements Rules {
 	private List<ScoreEvent> scoreEvents;
 	private int lastScoreEvent;
 
-	final static int[] colors = { R.id.buttonRed, R.id.buttonGreen, R.id.buttonBlue, R.id.buttonYellow, R.id.buttonBlack };
-	final static int[] colorStringIds = { R.string.red, R.string.green, R.string.blue, R.string.yellow, R.string.black };
+	final static int[] colors = { R.id.buttonRed, R.id.buttonGreen,
+		R.id.buttonBlue, R.id.buttonYellow, R.id.buttonBlack };
+	final static int[] colorStringIds = { R.string.red, R.string.green,
+		R.string.blue, R.string.yellow, R.string.black };
 	private Map<Integer, String> colorStrings;
 
 	// UI
 	private TableLayout tableLayoutColors;
 
-	private LinearLayout linearLayoutTrains;
-	private LinearLayout linearLayoutContractsCompleted;
-	private LinearLayout linearLayoutBonuses;
-	private LinearLayout linearLayoutContractsMissed;
+	private TextView textViewTrains;
+	private TextView textViewContractsCompleted;
+	private TextView textViewBonuses;
+	private TextView textViewContractsMissed;
 
 	private GridView gridViewTrains;
 	private GridView gridViewContractsCompleted;
@@ -83,7 +84,10 @@ public class MainActivity extends Activity implements Rules {
 	final private String FIELD_VALUE = "value";
 	final private String FIELD_DESCRIPTION = "description";
 	final private String FIELD_COLOR = "color";
-	final private String CREATE_TABLE = "CREATE TABLE " + TABLE + " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_TYPE + " INTEGER, " + FIELD_VALUE + " INTEGER, " + FIELD_DESCRIPTION + " TEXT, " + FIELD_COLOR + " INTEGER);";
+	final private String CREATE_TABLE = "CREATE TABLE " + TABLE
+			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_TYPE
+			+ " INTEGER, " + FIELD_VALUE + " INTEGER, " + FIELD_DESCRIPTION
+			+ " TEXT, " + FIELD_COLOR + " INTEGER);";
 	final private String DROP_TABLE = "DROP TABLE " + TABLE;
 
 	// Bundle
@@ -138,7 +142,8 @@ public class MainActivity extends Activity implements Rules {
 	private void updateUi() {
 		final int visibleA = isLastTurnComplete() ? View.GONE : View.VISIBLE;
 		final int visibleB = isLastTurnComplete() ? View.VISIBLE : View.GONE;
-		final int visibleC = selectedColor == -1 ? View.VISIBLE : View.INVISIBLE;
+		final int visibleC = selectedColor == -1 ? View.VISIBLE
+				: View.INVISIBLE;
 
 		final boolean enabledA = selectedColor != -1;
 
@@ -149,23 +154,37 @@ public class MainActivity extends Activity implements Rules {
 			colorButtons.get(color).setText(Integer.toString(getScore(color)));
 		}
 
-		linearLayoutTrains.setVisibility(visibleA);
-		enableViewRecursive(linearLayoutTrains, enabledA);
 		enableGridView(gridViewTrains, enabledA);
+		gridViewTrains.setVisibility(visibleA);
 
-		linearLayoutContractsCompleted.setVisibility(visibleA);
-		enableViewRecursive(linearLayoutContractsCompleted, enabledA);
 		enableGridView(gridViewContractsCompleted, enabledA);
+		gridViewContractsCompleted.setVisibility(visibleA);
 
-		linearLayoutBonuses.setVisibility(visibleB);
-		enableViewRecursive(linearLayoutBonuses, enabledA);
 		enableGridView(gridViewBonuses, enabledA);
+		gridViewBonuses.setVisibility(visibleB);
 
-		linearLayoutContractsMissed.setVisibility(visibleB);
-		enableViewRecursive(linearLayoutContractsMissed, enabledA);
 		enableGridView(gridViewContractsMissed, enabledA);
+		gridViewContractsMissed.setVisibility(visibleB);
 
-		updateHistoryView();
+		if (textViewTrains != null) {
+			textViewTrains.setVisibility(visibleA);
+		}
+
+		if (textViewContractsCompleted != null) {
+			textViewContractsCompleted.setVisibility(visibleA);
+		}
+
+		if (textViewBonuses != null) {
+			textViewBonuses.setVisibility(visibleB);
+		}
+
+		if (textViewContractsMissed != null) {
+			textViewContractsMissed.setVisibility(visibleB);
+		}
+
+		if (historyView != null) {
+			updateHistoryView();
+		}
 	}
 
 	private void updateHistoryView() {
@@ -181,7 +200,10 @@ public class MainActivity extends Activity implements Rules {
 			scores.put(scoreEvent.getColor(), score);
 
 			String logEntry;
-			logEntry = String.format(getString(R.string.history_entry), colorStrings.get(scoreEvent.getColor()), scoreEvent.getLongDescription(getApplicationContext()), score );
+			logEntry = String.format(getString(R.string.history_entry),
+					colorStrings.get(scoreEvent.getColor()),
+					scoreEvent.getLongDescription(getApplicationContext()),
+					score);
 			historyView.append(logEntry);
 		}
 	}
@@ -192,7 +214,7 @@ public class MainActivity extends Activity implements Rules {
 			child.setEnabled(enabled);
 
 			if (child instanceof ViewGroup) {
-				enableViewRecursive((ViewGroup)child, enabled);
+				enableViewRecursive((ViewGroup) child, enabled);
 			}
 		}
 	}
@@ -229,7 +251,8 @@ public class MainActivity extends Activity implements Rules {
 
 			// Create the event.
 			ScoreButton scoreButton = (ScoreButton) view;
-			ScoreEvent scoreEvent = new ScoreEvent(selectedColor, scoreButton.getScoreSpec());
+			ScoreEvent scoreEvent = new ScoreEvent(selectedColor,
+					scoreButton.getScoreSpec());
 
 			// Update the state.
 			scoreEvents.add(scoreEvent);
@@ -272,27 +295,46 @@ public class MainActivity extends Activity implements Rules {
 	}
 
 	private void updateScores() {
+		if (tableLayoutColors == null) {
+			updateScoresSimple();
+		} else {
+			updateScoresTable();
+		}
+	}
+
+	private void updateScoresSimple() {
+		for (int color : colors) {
+			Button button = (Button) findViewById(color);
+			button.setText(Integer.toString(getScore(color)));
+		}
+	}
+
+	private void updateScoresTable() {
 		for (int i = 1; i < tableLayoutColors.getChildCount(); i++) {
 			TableRow row = (TableRow) tableLayoutColors.getChildAt(i);
+			int numCols = row.getChildCount();
 			int col = 0;
 
 			Button button = (Button) row.getChildAt(col++);
 			int color = button.getId();
+			button.setText(Integer.toString(getScore(color)));
 
-			int score = getScoreByType(color, ScoreEvent.TYPE.TRAIN);
-			TextView textView = (TextView) row.getChildAt(col++);
-			textView.setText(Integer.toString(score));
+			if (numCols > 1) {
+				int score = getScoreByType(color, ScoreEvent.TYPE.TRAIN);
+				TextView textView = (TextView) row.getChildAt(col++);
+				textView.setText(Integer.toString(score));
 
-			score = getScoreByType(color, ScoreEvent.TYPE.COMPLETED_CONTRACT) + getScoreByType(color, ScoreEvent.TYPE.MISSED_CONTRACT);
-			textView = (TextView) row.getChildAt(col++);
-			textView.setText(Integer.toString(score));
+				score = getScoreByType(color,
+						ScoreEvent.TYPE.COMPLETED_CONTRACT)
+						+ getScoreByType(color, ScoreEvent.TYPE.MISSED_CONTRACT);
+				textView = (TextView) row.getChildAt(col++);
+				textView.setText(Integer.toString(score));
 
-			score = getScoreByType(color, ScoreEvent.TYPE.STATION) + getScoreByType(color, ScoreEvent.TYPE.BONUS);
-			textView = (TextView) row.getChildAt(col++);
-			textView.setText(Integer.toString(score));
-
-			score = getScore(color);
-			button.setText(Integer.toString(score));
+				score = getScoreByType(color, ScoreEvent.TYPE.STATION)
+						+ getScoreByType(color, ScoreEvent.TYPE.BONUS);
+				textView = (TextView) row.getChildAt(col++);
+				textView.setText(Integer.toString(score));
+			}
 		}
 	}
 
@@ -301,7 +343,7 @@ public class MainActivity extends Activity implements Rules {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		//Eula.show(this);
+		// Eula.show(this);
 		final Resources res = getResources();
 
 		scoreEvents = new LinkedList<ScoreEvent>();
@@ -322,9 +364,11 @@ public class MainActivity extends Activity implements Rules {
 
 		// Buttons
 		lastTurnButton = (CheckBox) findViewById(R.id.buttonLastTurnComplete);
-		lastTurnButton.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+		lastTurnButton
+		.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
 				updateUi();
 			}
 		});
@@ -337,15 +381,18 @@ public class MainActivity extends Activity implements Rules {
 		List<View> buttons = new LinkedList<View>();
 		for (int i = 0; i < trainPoints.length; i++) {
 			if (trainPoints[i] >= 0) {
-				String text = String.format(res.getQuantityString(R.plurals.button_trains, i+1), (i+1), trainPoints[i]);
-				Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.TRAIN, trainPoints[i],
-						Integer.toString(i+1)));
+				String text = String.format(
+						res.getQuantityString(R.plurals.button_trains, i + 1),
+						(i + 1), trainPoints[i]);
+				Button button = new ScoreButton(this, text, new ScoreSpec(
+						ScoreEvent.TYPE.TRAIN, trainPoints[i],
+						Integer.toString(i + 1)));
 				button.setOnClickListener(onScoreEvent);
 				buttons.add(button);
 			}
 		}
 
-		linearLayoutTrains = (LinearLayout) findViewById(R.id.linearLayoutTrains);
+		textViewTrains = (TextView) findViewById(R.id.textViewTrains);
 
 		gridViewTrains = (GridView) findViewById(R.id.gridViewTrains);
 		gridViewTrains.setAdapter(new ViewAdapter(this, buttons));
@@ -353,13 +400,15 @@ public class MainActivity extends Activity implements Rules {
 		// Contracts Completed
 		buttons = new LinkedList<View>();
 		for (int i : trainContracts) {
-			String text = String.format(getString(R.string.button_contracts_complete), i, i);
-			Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.COMPLETED_CONTRACT, i, Integer.toString(i)));
+			String text = String.format(
+					getString(R.string.button_contracts_complete), i, i);
+			Button button = new ScoreButton(this, text, new ScoreSpec(
+					ScoreEvent.TYPE.COMPLETED_CONTRACT, i, Integer.toString(i)));
 			button.setOnClickListener(onScoreEvent);
 			buttons.add(button);
 		}
 
-		linearLayoutContractsCompleted = (LinearLayout) findViewById(R.id.linearLayoutContractsCompleted);
+		textViewContractsCompleted = (TextView) findViewById(R.id.textViewContractsCompleted);
 
 		gridViewContractsCompleted = (GridView) findViewById(R.id.gridViewContractsCompleted);
 		gridViewContractsCompleted.setAdapter(new ViewAdapter(this, buttons));
@@ -367,13 +416,15 @@ public class MainActivity extends Activity implements Rules {
 		// Contracts Missed
 		buttons = new LinkedList<View>();
 		for (int i : trainContracts) {
-			String text = String.format(getString(R.string.button_contracts_missed), i, -i);
-			Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.MISSED_CONTRACT, -i, Integer.toString(i)));
+			String text = String.format(
+					getString(R.string.button_contracts_missed), i, -i);
+			Button button = new ScoreButton(this, text, new ScoreSpec(
+					ScoreEvent.TYPE.MISSED_CONTRACT, -i, Integer.toString(i)));
 			button.setOnClickListener(onScoreEvent);
 			buttons.add(button);
 		}
 
-		linearLayoutContractsMissed = (LinearLayout) findViewById(R.id.linearLayoutContractsMissed);
+		textViewContractsMissed = (TextView) findViewById(R.id.textViewContractsMissed);
 
 		gridViewContractsMissed = (GridView) findViewById(R.id.gridViewContractsMissed);
 		gridViewContractsMissed.setAdapter(new ViewAdapter(this, buttons));
@@ -381,22 +432,27 @@ public class MainActivity extends Activity implements Rules {
 		// Bonuses
 		buttons = new LinkedList<View>();
 		for (int i = 1; i <= numTrainStations; i++) {
-			String text = String.format(res.getQuantityString(R.plurals.button_train_stations, i), i, trainStationValue * i);
-			Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.STATION, trainStationValue * i,
+			String text = String.format(
+					res.getQuantityString(R.plurals.button_train_stations, i),
+					i, trainStationValue * i);
+			Button button = new ScoreButton(this, text, new ScoreSpec(
+					ScoreEvent.TYPE.STATION, trainStationValue * i,
 					Integer.toString(i)));
 			button.setOnClickListener(onScoreEvent);
 			buttons.add(button);
 		}
 
 		for (int i = 0; i < bonusValue.length; i++) {
-			String text = String.format(getString(bonusButtonText[i]), i, bonusValue[i]);
-			Button button = new ScoreButton(this, text, new ScoreSpec(ScoreEvent.TYPE.BONUS, bonusValue[i],
+			String text = String.format(getString(bonusButtonText[i]), i,
+					bonusValue[i]);
+			Button button = new ScoreButton(this, text, new ScoreSpec(
+					ScoreEvent.TYPE.BONUS, bonusValue[i],
 					getString(bonusText[i])));
 			button.setOnClickListener(onScoreEvent);
 			buttons.add(button);
 		}
 
-		linearLayoutBonuses = (LinearLayout) findViewById(R.id.linearLayoutBonuses);
+		textViewBonuses = (TextView) findViewById(R.id.textViewBonuses);
 
 		gridViewBonuses = (GridView) findViewById(R.id.gridViewBonuses);
 		gridViewBonuses.setAdapter(new ViewAdapter(this, buttons));
@@ -452,7 +508,8 @@ public class MainActivity extends Activity implements Rules {
 					MainActivity.this);
 			builder.setMessage(R.string.new_game_prompt)
 			.setPositiveButton(R.string.yes, onNewGameConfirmDialog)
-			.setNegativeButton(R.string.no, onNewGameConfirmDialog).show();
+			.setNegativeButton(R.string.no, onNewGameConfirmDialog)
+			.show();
 			return true;
 		case R.id.undo:
 			undo();
@@ -485,7 +542,8 @@ public class MainActivity extends Activity implements Rules {
 		}
 
 		savedInstanceState.putInt(BUNDLE_SELECTED_COLOR, selectedColor);
-		savedInstanceState.putBoolean(BUNDLE_LAST_TURN_COMPLETE, isLastTurnComplete());
+		savedInstanceState.putBoolean(BUNDLE_LAST_TURN_COMPLETE,
+				isLastTurnComplete());
 	}
 
 	private void restoreUi(Bundle savedInstanceState) {
@@ -494,7 +552,8 @@ public class MainActivity extends Activity implements Rules {
 		}
 
 		selectedColor = savedInstanceState.getInt(BUNDLE_SELECTED_COLOR);
-		lastTurnButton.setChecked(savedInstanceState.getBoolean(BUNDLE_LAST_TURN_COMPLETE));
+		lastTurnButton.setChecked(savedInstanceState
+				.getBoolean(BUNDLE_LAST_TURN_COMPLETE));
 
 		updateUi();
 	}
@@ -512,7 +571,7 @@ public class MainActivity extends Activity implements Rules {
 	}
 
 	private void write() {
-		//Log.v(TAG, "write");
+		// Log.v(TAG, "write");
 
 		// Remove any undo events.
 		if (lastScoreEvent != scoreEvents.size()) {
@@ -522,28 +581,29 @@ public class MainActivity extends Activity implements Rules {
 		SQLiteDatabase database;
 
 		try {
-			//Log.v(TAG, "write open");
-			database = openOrCreateDatabase(DATABASE, SQLiteDatabase.CREATE_IF_NECESSARY, null);
+			// Log.v(TAG, "write open");
+			database = openOrCreateDatabase(DATABASE,
+					SQLiteDatabase.CREATE_IF_NECESSARY, null);
 			database.setLocale(Locale.getDefault());
 			database.setLockingEnabled(true);
 			database.setVersion(1);
-			//Log.v(TAG, "write complete");
+			// Log.v(TAG, "write complete");
 		} catch (SQLiteException e) {
-			//Log.v(TAG, "Failed to open saved settings.");
+			// Log.v(TAG, "Failed to open saved settings.");
 			e.printStackTrace();
 			return;
 		}
 
 		try {
-			//Log.v(TAG, "write drop table");
+			// Log.v(TAG, "write drop table");
 			database.execSQL(DROP_TABLE);
 		} catch (SQLiteException e) {
 			// This is fine if the table does not exist.
-			//Log.i(TAG, "Saved game does not exist.");
+			// Log.i(TAG, "Saved game does not exist.");
 		}
 
 		try {
-			//Log.v(TAG, "write create table");
+			// Log.v(TAG, "write create table");
 			database.execSQL(CREATE_TABLE);
 
 			for (ScoreEvent scoreEvent : scoreEvents) {
@@ -554,20 +614,20 @@ public class MainActivity extends Activity implements Rules {
 				values.put(FIELD_DESCRIPTION, scoreEvent.getParam());
 				values.put(FIELD_COLOR, scoreEvent.getColor());
 
-				//Log.v(TAG, "write event=" + values);
+				// Log.v(TAG, "write event=" + values);
 				database.insertOrThrow(TABLE, null, values);
 			}
 		} catch (SQLiteException e) {
 			Log.e(TAG, "Failed to write saved game.");
 			e.printStackTrace();
 		} finally {
-			//Log.v(TAG, "write close");
+			// Log.v(TAG, "write close");
 			database.close();
 		}
 	}
 
 	private void read() {
-		//Log.v(TAG, "read");
+		// Log.v(TAG, "read");
 
 		scoreEvents.clear();
 		lastScoreEvent = 0;
@@ -575,19 +635,21 @@ public class MainActivity extends Activity implements Rules {
 		SQLiteDatabase database = null;
 
 		try {
-			//Log.v(TAG, "read open");
-			database = openOrCreateDatabase(DATABASE, SQLiteDatabase.OPEN_READONLY, null);
+			// Log.v(TAG, "read open");
+			database = openOrCreateDatabase(DATABASE,
+					SQLiteDatabase.OPEN_READONLY, null);
 			database.setLocale(Locale.getDefault());
 			database.setLockingEnabled(true);
 			database.setVersion(1);
-			//Log.v(TAG, "read open complete");
+			// Log.v(TAG, "read open complete");
 		} catch (SQLiteException e) {
 			Log.e(TAG, "Failed to open saved settings.");
 			return;
 		}
 
 		try {
-			Cursor c = database.query(TABLE, null, null, null, null, null, null);
+			Cursor c = database
+					.query(TABLE, null, null, null, null, null, null);
 			startManagingCursor(c);
 
 			c.moveToFirst();
@@ -597,8 +659,9 @@ public class MainActivity extends Activity implements Rules {
 				String description = c.getString(3);
 				int color = c.getInt(4);
 
-				ScoreEvent scoreEvent = new ScoreEvent(color, new ScoreSpec(type, value, description));
-				//Log.v(TAG, "read event=" + scoreEvent);
+				ScoreEvent scoreEvent = new ScoreEvent(color, new ScoreSpec(
+						type, value, description));
+				// Log.v(TAG, "read event=" + scoreEvent);
 				scoreEvents.add(scoreEvent);
 				c.moveToNext();
 			}
@@ -610,41 +673,64 @@ public class MainActivity extends Activity implements Rules {
 			Log.e(TAG, "Failed to read saved game.");
 			e.printStackTrace();
 		} finally {
-			//Log.v(TAG, "read close");
+			// Log.v(TAG, "read close");
 			database.close();
 		}
 	}
 
-	private void addTestData()
-	{
-		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 7, "4")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonRed, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 10, "10")));
+	private void addTestData() {
+		scoreEvents.add(new ScoreEvent(R.id.buttonRed, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonRed, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 7, "4")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonRed, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonRed, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonRed, new ScoreSpec(
+				ScoreSpec.TYPE.COMPLETED_CONTRACT, 10, "10")));
 
-		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 10, "5")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonGreen, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 16, "16")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonGreen, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonGreen, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonGreen, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonGreen, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 10, "5")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonGreen, new ScoreSpec(
+				ScoreSpec.TYPE.COMPLETED_CONTRACT, 16, "16")));
 
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 7, "4")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlue, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 9, "9")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlue, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlue, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 7, "4")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlue, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlue, new ScoreSpec(
+				ScoreSpec.TYPE.COMPLETED_CONTRACT, 9, "9")));
 
-		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 15, "6")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonYellow, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 6, "6")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonYellow, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonYellow, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonYellow, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonYellow, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 15, "6")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonYellow, new ScoreSpec(
+				ScoreSpec.TYPE.COMPLETED_CONTRACT, 6, "6")));
 
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 2, "2")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 7, "4")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.TRAIN, 4, "3")));
-		scoreEvents.add( new ScoreEvent(R.id.buttonBlack, new ScoreSpec(ScoreSpec.TYPE.COMPLETED_CONTRACT, 12, "12")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlack, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 2, "2")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlack, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlack, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 7, "4")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlack, new ScoreSpec(
+				ScoreSpec.TYPE.TRAIN, 4, "3")));
+		scoreEvents.add(new ScoreEvent(R.id.buttonBlack, new ScoreSpec(
+				ScoreSpec.TYPE.COMPLETED_CONTRACT, 12, "12")));
 
 		Collections.shuffle(scoreEvents);
 		lastScoreEvent = scoreEvents.size();

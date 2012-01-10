@@ -8,40 +8,116 @@
         android:id="@+id/linearLayoutLeft"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="3"
+        android:layout_weight="5"
         android:orientation="vertical" >
 
-        <include layout="@layout/player_table" />
+        <ToggleButton
+            android:id="@+id/buttonRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/red_button"
+            android:paddingBottom="10dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:paddingTop="10dip"
+            android:textColor="@color/White"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/buttonGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_button"
+            android:paddingBottom="10dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:paddingTop="10dip"
+            android:textColor="@color/White"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/buttonBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_button"
+            android:paddingBottom="10dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:paddingTop="10dip"
+            android:textColor="@color/White"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/buttonYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/yellow_button"
+            android:paddingBottom="10dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:paddingTop="10dip"
+            android:textColor="@color/Black"
+            android:textOff=""
+            android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/buttonBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_button"
+            android:paddingBottom="10dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:paddingTop="10dip"
+            android:textColor="@color/White"
+            android:textOff=""
+            android:textOn="" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" />
 
         <CheckBox
             android:id="@+id/buttonLastTurnComplete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Last Turn Complete" />
-
-        <TextView
-            android:id="@+id/historyTitle"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="History"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/history"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:visibility="gone" />
+            android:text="Done" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayoutRight"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="vertical" >
 
-        <include layout="@layout/score_panel" />
+        <GridView
+            android:id="@+id/gridViewTrains"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="4" />
+
+        <GridView
+            android:id="@+id/gridViewContractsCompleted"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="7" />
+
+        <GridView
+            android:id="@+id/gridViewBonuses"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2" />
+
+        <GridView
+            android:id="@+id/gridViewContractsMissed"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="7" />
     </LinearLayout>
 
 </LinearLayout>

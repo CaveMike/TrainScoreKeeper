@@ -1,81 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
-        <LinearLayout
-        android:id="@+id/linearLayoutTrains"
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/textViewTrains"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:text="Trains" />
 
-        <TextView
-            android:id="@+id/editText3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Trains" />
-
-        <GridView
-            android:id="@+id/gridViewTrains"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="4" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutContractsCompleted"
+    <GridView
+        android:id="@+id/gridViewTrains"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical" >
+        android:numColumns="4" />
 
-        <TextView
-            android:id="@+id/editText5"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Contracts Completed" />
-
-        <GridView
-            android:id="@+id/gridViewContractsCompleted"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="6" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutBonuses"
+    <TextView
+        android:id="@+id/textViewContractsCompleted"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:text="Contracts Completed" />
 
-        <TextView
-            android:id="@+id/editText7"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Bonuses" />
-
-        <GridView
-            android:id="@+id/gridViewBonuses"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="2" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayoutContractsMissed"
+    <GridView
+        android:id="@+id/gridViewContractsCompleted"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical" >
+        android:numColumns="6" />
 
-        <TextView
-            android:id="@+id/editText6"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Contracts Missed" />
+    <TextView
+        android:id="@+id/textViewBonuses"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Bonuses" />
 
-        <GridView
-            android:id="@+id/gridViewContractsMissed"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:numColumns="6" />
-    </LinearLayout>
-    
+    <GridView
+        android:id="@+id/gridViewBonuses"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="2" />
+
+    <TextView
+        android:id="@+id/textViewContractsMissed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Contracts Missed" />
+
+    <GridView
+        android:id="@+id/gridViewContractsMissed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="6" />
+
 </merge>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  Notes to translator:
-        1. 'Ticket to Ride' is a product name and should not be translated.  'Score Keeper'
-           should be translated.
+        1. 'Train Score Keeper' is a product name and should not be translated.
 
         2. Only text in the contents of <string> and <item> should be translated.  Ignore text in
            comments, quotes, or the xml itself.
@@ -25,8 +24,8 @@
     -->
 
     <!--  APP TITLES -->
-    <string name="app_name">Ticket to Ride Score Keeper</string>
-    <string name="app_short_name">Score Keeper</string>
+    <string name="app_name">Train Score Keeper</string>
+    <string name="app_short_name">Train Score Keeper</string>
 
     <!-- ABOUT
          This is used for the About box dialog that lists app details. -->

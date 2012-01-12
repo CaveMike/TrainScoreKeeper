@@ -1,7 +1,7 @@
 ----
 Title (30):
 ----
-Ticket to Ride Score Keeper
+Train Score Keeper
 ----
 Description (4000):
 ----
@@ -19,7 +19,7 @@ Full source code available under the Apache License, Version 2.0 at:
 - https://github.com/CaveMike/TrainScoreKeeper
 
 NOTE:
-This is not a game.  It is a utility that requires a physical Ticket to Ride board game.
+This is not a game.  It is a utility that requires a physical board game.
 
 DISCLAIMER:
 This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride USA, Europe, Nordic Countries, Märklin, Asia, and India as well as  Days of Wonder are trademarks or registered trademarks of Days of Wonder, Inc.  Days of Wonder neither warrants nor represents this application and is not responsibile for any losses or damages related to use of this application.

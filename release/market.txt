@@ -26,11 +26,9 @@ This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride U
 ----
 Recent Changes (500):
 ----
-Version 2:
-- Improved the UI to fit better on phones.
-
-Version 1:
-- Initial release tested on Motorola Xoom, Motorola Bionic.
+Version 3: Began translations for various locales.
+Version 2: Improved the UI to fit better on phones.
+Version 1: Initial release tested on Motorola Xoom, Motorola Bionic.
 ----
 Promo Text (80):
 ----

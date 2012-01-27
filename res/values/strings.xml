@@ -111,10 +111,10 @@
     </plurals>
 
     <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_complete">(+%2$d)</string>
+    <string name="button_contracts_complete">+%2$d</string>
 
     <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_missed">(%2$d)</string>
+    <string name="button_contracts_missed">%2$d</string>
 
     <!--  %1 is a number of train stations, %2 is a number of points. -->
     <plurals name="button_train_stations">

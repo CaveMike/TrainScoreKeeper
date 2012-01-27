@@ -667,6 +667,7 @@ public class MainActivity extends Activity implements Rules {
 			}
 
 			stopManagingCursor(c);
+			c.close();
 
 			lastScoreEvent = scoreEvents.size();
 		} catch (SQLiteException e) {

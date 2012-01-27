@@ -26,11 +26,13 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -345,6 +347,15 @@ public class MainActivity extends Activity implements Rules {
 
 		// Eula.show(this);
 		final Resources res = getResources();
+
+		//FIXME: Hack to lock smaller screens (phones) into landscape mode.
+		//       This is necessary because the portrait layout does not fit
+		//       on all screens.
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		if ((metrics.heightPixels < 600) || (metrics.widthPixels < 600)) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		}
 
 		scoreEvents = new LinkedList<ScoreEvent>();
 

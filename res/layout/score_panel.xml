@@ -5,7 +5,7 @@
         android:id="@+id/textViewTrains"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Trains" />
+        android:text="@string/trains" />
 
     <GridView
         android:id="@+id/gridViewTrains"
@@ -17,7 +17,7 @@
         android:id="@+id/textViewContractsCompleted"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Contracts Completed" />
+        android:text="@string/contracts_completed" />
 
     <GridView
         android:id="@+id/gridViewContractsCompleted"
@@ -29,7 +29,7 @@
         android:id="@+id/textViewBonuses"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Bonuses" />
+        android:text="@string/bonuses" />
 
     <GridView
         android:id="@+id/gridViewBonuses"
@@ -41,7 +41,7 @@
         android:id="@+id/textViewContractsMissed"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Contracts Missed" />
+        android:text="@string/contracts_missed" />
 
     <GridView
         android:id="@+id/gridViewContractsMissed"

@@ -10,28 +10,28 @@
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="Player"
+            android:text="@string/player"
             android:textStyle="bold" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="Trains"
+            android:text="@string/trains"
             android:textStyle="bold" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="Contracts"
+            android:text="@string/contracts_completed"
             android:textStyle="bold" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="Bonus"
+            android:text="@string/bonuses"
             android:textStyle="bold" />
     </TableRow>
 
@@ -50,19 +50,19 @@
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
     </TableRow>
 
     <TableRow >
@@ -80,19 +80,19 @@
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
     </TableRow>
 
     <TableRow >
@@ -110,19 +110,19 @@
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
     </TableRow>
 
     <TableRow >
@@ -140,19 +140,19 @@
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
     </TableRow>
 
     <TableRow >
@@ -170,19 +170,19 @@
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
 
         <TextView
             style="@style/PlayerTableText"
             android:gravity="center"
             android:padding="10dip"
-            android:text="0" />
+            android:text="" />
     </TableRow>
 
 </TableLayout>

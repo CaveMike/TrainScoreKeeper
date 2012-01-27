@@ -51,6 +51,18 @@
     <string name="redo">Redo</string>
     <string name="help">Help</string>
 
+    <!-- UI LABELS -->
+    <string name="player">Player</string>
+    <string name="trains">Trains</string>
+    <string name="contracts_completed">Contracts Completed</string>
+    <string name="contracts_missed">Contracts Missed</string>
+    <string name="bonuses">Bonus</string>
+    <string name="history">History</string>
+
+    <!--  Checkbox that indicates the game is done or complete. -->
+    <string name="done">Done</string>
+    <string name="done_long">Last Turn Complete</string>
+
     <!--  PLAYER'S COLOR.
           These refer to a player by his color.  'Red' means 'the red player'. -->
     <string name="red">Rojo</string>

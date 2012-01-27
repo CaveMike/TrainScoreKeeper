@@ -3,6 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
+	android:baselineAligned="false"
 	android:orientation="horizontal">
 
 	<LinearLayout
@@ -18,13 +19,13 @@
 			android:id="@+id/buttonLastTurnComplete"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Last Turn Complete"/>
+			android:text="@string/done_long"/>
 
 		<TextView
 			android:id="@+id/historyTitle"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:text="History"/>
+			android:text="@string/history"/>
 
 		<TextView
 			android:id="@+id/history"

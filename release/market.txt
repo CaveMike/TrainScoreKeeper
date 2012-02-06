@@ -19,13 +19,14 @@ Full source code available under the Apache License, Version 2.0 at:
 - https://github.com/CaveMike/TrainScoreKeeper
 
 NOTE:
-This is not a game.  It is a utility that requires a physical board game.
+This is not a game.  It is a utility that requires a physical Ticket to Ride board game.
 
 DISCLAIMER:
 This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride USA, Europe, Nordic Countries, Märklin, Asia, and India as well as  Days of Wonder are trademarks or registered trademarks of Days of Wonder, Inc.  Days of Wonder neither warrants nor represents this application and is not responsibile for any losses or damages related to use of this application.
 ----
 Recent Changes (500):
 ----
+Version 5: Added Catalan and Spanish translations.
 Version 4: Added two and three point contracts.  Lock phones into landscape mode.
 Version 3: Began translations for various locales.
 Version 2: Improved the UI to fit better on phones.

@@ -26,6 +26,7 @@ This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride U
 ----
 Recent Changes (500):
 ----
+Version 6: Added the Globetrotter bonus.
 Version 5: Added Catalan and Spanish translations.
 Version 4: Added two and three point contracts.  Lock phones into landscape mode.
 Version 3: Began translations for various locales.

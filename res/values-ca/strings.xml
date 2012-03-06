@@ -101,6 +101,7 @@
 
     <!--  BONUSES -->
     <string name="history_longest_train">El tren més llarg</string>
+    <string name="history_globetrotter">Rodamón</string>
 
     <!--  BUTTON TEXT -->
     <!--  %1 is a number of train cars, %2 is a number of points. -->
@@ -123,5 +124,5 @@
 
     <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_longest_train">Tren Llarg (+%2$d)</string>
-
+    <string name="button_globetrotter">Rodamón (+%2$d)</string>
 </resources>

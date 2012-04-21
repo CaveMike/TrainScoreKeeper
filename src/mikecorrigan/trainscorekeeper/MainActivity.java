@@ -43,6 +43,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.GridView;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -78,6 +79,7 @@ public class MainActivity extends Activity implements Rules {
 	private Map<Integer, ToggleButton> colorButtons;
 	private CheckBox lastTurnButton;
 	private TextView historyView;
+	private ScrollView scrollView;
 
 	// Database
 	final private String DATABASE = "database.db";
@@ -207,6 +209,10 @@ public class MainActivity extends Activity implements Rules {
 					scoreEvent.getLongDescription(getApplicationContext()),
 					score);
 			historyView.append(logEntry);
+		}
+
+		if (scrollView != null) {
+			scrollView.fullScroll(ScrollView.FOCUS_DOWN);
 		}
 	}
 
@@ -385,6 +391,7 @@ public class MainActivity extends Activity implements Rules {
 		});
 
 		historyView = (TextView) findViewById(R.id.history);
+		scrollView = (ScrollView) findViewById(R.id.scroller);
 
 		tableLayoutColors = (TableLayout) findViewById(R.id.tableLayoutColors);
 
@@ -682,8 +689,7 @@ public class MainActivity extends Activity implements Rules {
 
 			lastScoreEvent = scoreEvents.size();
 		} catch (SQLiteException e) {
-			Log.e(TAG, "Failed to read saved game.");
-			e.printStackTrace();
+			Log.d(TAG, "Failed to read saved game.");
 		} finally {
 			// Log.v(TAG, "read close");
 			database.close();

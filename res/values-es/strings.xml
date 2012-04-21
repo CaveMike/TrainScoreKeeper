@@ -54,6 +54,7 @@
     <!-- UI LABELS -->
     <string name="player">Jugador</string>
     <string name="trains">Trenes</string>
+    <string name="contracts">Contratos</string>
     <string name="contracts_completed">Contratos Completos</string>
     <string name="contracts_missed">Contratos Perdidas</string>
     <string name="bonuses">Primas</string>
@@ -70,6 +71,7 @@
     <string name="blue">Azul</string>
     <string name="yellow">Amarillo</string>
     <string name="black">Negro</string>
+    <string name="purple">Morado</string>
 
     <!--  %1 is a player's color (listed above),
           %2 is an action (listed below),

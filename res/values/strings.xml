@@ -55,9 +55,10 @@
     <!-- UI LABELS -->
     <string name="player">Player</string>
     <string name="trains">Trains</string>
+    <string name="contracts">Contracts</string>
     <string name="contracts_completed">Contracts Completed</string>
     <string name="contracts_missed">Contracts Missed</string>
-    <string name="bonuses">Bonus</string>
+    <string name="bonuses">Bonuses</string>
     <string name="history">History</string>
 
     <!--  Checkbox that indicates the game is done or complete. -->
@@ -71,6 +72,7 @@
     <string name="blue">Blue</string>
     <string name="yellow">Yellow</string>
     <string name="black">Black</string>
+    <string name="purple">Purple</string>
 
     <!--  %1 is a player's color (listed above),
           %2 is an action (listed below),

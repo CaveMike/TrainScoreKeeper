@@ -21,10 +21,18 @@
 		android:layout_height="wrap_content"
 		android:text="@string/history"/>
 
-	<TextView
-		android:id="@+id/history"
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/scroller"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text=""/>
+		android:layout_height="fill_parent"
+		android:fillViewport="true" >
+
+	    <TextView
+			android:id="@+id/history"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text=""/>
+
+		</ScrollView>
 
 </LinearLayout>

@@ -61,6 +61,7 @@ public class MainActivity extends Activity implements Rules {
 	final static int[] colorStringIds = { R.string.red, R.string.green,
 		R.string.blue, R.string.yellow, R.string.black, R.string.purple, R.string.white };
 	private Map<Integer, String> colorStrings;
+	private Map<Integer, Boolean> colorEnabled;
 
 	// UI
 	private TableLayout tableLayoutColors;
@@ -83,16 +84,22 @@ public class MainActivity extends Activity implements Rules {
 
 	// Database
 	final private String DATABASE = "database.db";
-	final private String TABLE = "events";
+	final private String TABLE_EVENTS = "events";
+	final private String TABLE_COLORS = "colors";
 	final private String FIELD_TYPE = "type";
 	final private String FIELD_VALUE = "value";
 	final private String FIELD_DESCRIPTION = "description";
 	final private String FIELD_COLOR = "color";
-	final private String CREATE_TABLE = "CREATE TABLE " + TABLE
+	final private String FIELD_ENABLED = "enabled";
+	final private String CREATE_TABLE_EVENTS = "CREATE TABLE " + TABLE_EVENTS
 			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_TYPE
 			+ " INTEGER, " + FIELD_VALUE + " INTEGER, " + FIELD_DESCRIPTION
 			+ " TEXT, " + FIELD_COLOR + " INTEGER);";
-	final private String DROP_TABLE = "DROP TABLE " + TABLE;
+	final private String CREATE_TABLE_COLORS = "CREATE TABLE " + TABLE_COLORS
+			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_COLOR
+			+ " INTEGER, " + FIELD_ENABLED + " INTEGER);";
+	final private String DROP_TABLE_EVENTS = "DROP TABLE " + TABLE_EVENTS;
+	final private String DROP_TABLE_COLORS = "DROP TABLE " + TABLE_COLORS;
 
 	// Bundle
 	final private String BUNDLE_SELECTED_COLOR = "selectedColor";
@@ -152,6 +159,12 @@ public class MainActivity extends Activity implements Rules {
 		final boolean enabledA = selectedColor != -1;
 
 		for (int color : colors) {
+			// Skip colors that are disabled.
+			if (!colorEnabled.get(color)) {
+				colorButtons.get(color).setVisibility(View.GONE);
+				continue;
+			}
+
 			if (color != selectedColor) {
 				colorButtons.get(color).setVisibility(visibleC);
 			}
@@ -369,6 +382,11 @@ public class MainActivity extends Activity implements Rules {
 		for (int i = 0; i < colors.length; i++) {
 			int color = colors[i];
 			colorStrings.put(color, getString(colorStringIds[i]));
+		}
+
+		colorEnabled = new HashMap<Integer, Boolean>();
+		for (int color : colors) {
+			colorEnabled.put(color, true);
 		}
 
 		// Color buttons
@@ -599,30 +617,57 @@ public class MainActivity extends Activity implements Rules {
 		SQLiteDatabase database;
 
 		try {
-			// Log.v(TAG, "write open");
+			// Log.v(TAG, "write open database");
 			database = openOrCreateDatabase(DATABASE,
 					SQLiteDatabase.CREATE_IF_NECESSARY, null);
 			database.setLocale(Locale.getDefault());
 			database.setLockingEnabled(true);
 			database.setVersion(1);
-			// Log.v(TAG, "write complete");
+			// Log.v(TAG, "write open database complete");
 		} catch (SQLiteException e) {
-			// Log.v(TAG, "Failed to open saved settings.");
+			// Log.v(TAG, "Failed to open database.");
 			e.printStackTrace();
 			return;
 		}
 
 		try {
-			// Log.v(TAG, "write drop table");
-			database.execSQL(DROP_TABLE);
+			// Log.v(TAG, "write drop colors table");
+			database.execSQL(DROP_TABLE_COLORS);
 		} catch (SQLiteException e) {
 			// This is fine if the table does not exist.
-			// Log.i(TAG, "Saved game does not exist.");
+			Log.i(TAG, "Colors table does not exist.");
 		}
 
 		try {
-			// Log.v(TAG, "write create table");
-			database.execSQL(CREATE_TABLE);
+			// Log.v(TAG, "write create colors table");
+			database.execSQL(CREATE_TABLE_COLORS);
+
+			for (int color : colors) {
+				boolean enabled = colorEnabled.get(color);
+
+				ContentValues values = new ContentValues();
+				values.put(FIELD_COLOR, color);
+				values.put(FIELD_ENABLED, enabled ? 1 : 0);
+				// Log.v(TAG, "write color: values=" + values);
+				database.insertOrThrow(TABLE_COLORS, null, values);
+			}
+		} catch (SQLiteException e) {
+			Log.e(TAG, "Failed to write colors table.");
+			e.printStackTrace();
+		} finally {
+		}
+
+		try {
+			// Log.v(TAG, "write drop events table");
+			database.execSQL(DROP_TABLE_EVENTS);
+		} catch (SQLiteException e) {
+			// This is fine if the table does not exist.
+			// Log.i(TAG, "Events table does not exist.");
+		}
+
+		try {
+			// Log.v(TAG, "write create events table");
+			database.execSQL(CREATE_TABLE_EVENTS);
 
 			for (ScoreEvent scoreEvent : scoreEvents) {
 				ContentValues values = new ContentValues();
@@ -633,13 +678,13 @@ public class MainActivity extends Activity implements Rules {
 				values.put(FIELD_COLOR, scoreEvent.getColor());
 
 				// Log.v(TAG, "write event=" + values);
-				database.insertOrThrow(TABLE, null, values);
+				database.insertOrThrow(TABLE_EVENTS, null, values);
 			}
 		} catch (SQLiteException e) {
-			Log.e(TAG, "Failed to write saved game.");
+			Log.e(TAG, "Failed to write events table.");
 			e.printStackTrace();
 		} finally {
-			// Log.v(TAG, "write close");
+			// Log.v(TAG, "write close database");
 			database.close();
 		}
 	}
@@ -653,21 +698,45 @@ public class MainActivity extends Activity implements Rules {
 		SQLiteDatabase database = null;
 
 		try {
-			// Log.v(TAG, "read open");
+			// Log.v(TAG, "read open database");
 			database = openOrCreateDatabase(DATABASE,
 					SQLiteDatabase.OPEN_READONLY, null);
 			database.setLocale(Locale.getDefault());
 			database.setLockingEnabled(true);
 			database.setVersion(1);
-			// Log.v(TAG, "read open complete");
+			// Log.v(TAG, "read open database complete");
 		} catch (SQLiteException e) {
-			Log.e(TAG, "Failed to open saved settings.");
+			Log.e(TAG, "Failed to open database.");
 			return;
 		}
 
+		// Read colors.
 		try {
 			Cursor c = database
-					.query(TABLE, null, null, null, null, null, null);
+					.query(TABLE_COLORS, null, null, null, null, null, null);
+			startManagingCursor(c);
+
+			c.moveToFirst();
+			while (!c.isAfterLast()) {
+				int color = c.getInt(1);
+				int enabled = c.getInt(2);
+
+				// Log.v(TAG, "read colors: color=" + color + ", enabled=" + enabled);
+				colorEnabled.put(color, enabled != 0);
+				c.moveToNext();
+			}
+
+			stopManagingCursor(c);
+			c.close();
+		} catch (SQLiteException e) {
+			// Log.d(TAG, "Failed to read colors table.");
+		} finally {
+		}
+
+		// Read score events.
+		try {
+			Cursor c = database
+					.query(TABLE_EVENTS, null, null, null, null, null, null);
 			startManagingCursor(c);
 
 			c.moveToFirst();
@@ -689,9 +758,9 @@ public class MainActivity extends Activity implements Rules {
 
 			lastScoreEvent = scoreEvents.size();
 		} catch (SQLiteException e) {
-			Log.d(TAG, "Failed to read saved game.");
+			// Log.d(TAG, "Failed to read events table.");
 		} finally {
-			// Log.v(TAG, "read close");
+			// Log.v(TAG, "read close database");
 			database.close();
 		}
 	}

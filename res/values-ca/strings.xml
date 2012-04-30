@@ -49,6 +49,7 @@
     <string name="new_game">Nova Partida</string>
     <string name="undo">Desfer</string>
     <string name="redo">Refer</string>
+    <string name="preferences">Preferències</string>
     <string name="help">Ajuda</string>
 
     <!-- UI LABELS -->
@@ -128,4 +129,13 @@
     <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_longest_train">Tren Llarg (+%2$d)</string>
     <string name="button_globetrotter">Rodamón (+%2$d)</string>
+
+    <!--  PREFERENCES -->
+    <string name="redSummary">Inclogui el jugador vermell</string>
+    <string name="greenSummary">Incloure el jugador verd</string>
+    <string name="blueSummary">Inclogui el jugador blau</string>
+    <string name="yellowSummary">Incloure el jugador groc</string>
+    <string name="blackSummary">Incloure el jugador negre</string>
+    <string name="purpleSummary">Inclogui el jugador morat</string>
+    <string name="whiteSummary">Inclogui el jugador blanc</string>
 </resources>

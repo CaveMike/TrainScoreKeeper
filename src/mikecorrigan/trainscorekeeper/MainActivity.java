@@ -26,12 +26,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -49,7 +53,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class MainActivity extends Activity implements Rules {
+public class MainActivity extends Activity implements Rules, OnSharedPreferenceChangeListener {
 	final private String TAG = this.getClass().getSimpleName();
 
 	// State
@@ -85,21 +89,16 @@ public class MainActivity extends Activity implements Rules {
 	// Database
 	final private String DATABASE = "database.db";
 	final private String TABLE_EVENTS = "events";
-	final private String TABLE_COLORS = "colors";
 	final private String FIELD_TYPE = "type";
 	final private String FIELD_VALUE = "value";
 	final private String FIELD_DESCRIPTION = "description";
 	final private String FIELD_COLOR = "color";
-	final private String FIELD_ENABLED = "enabled";
 	final private String CREATE_TABLE_EVENTS = "CREATE TABLE " + TABLE_EVENTS
 			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_TYPE
 			+ " INTEGER, " + FIELD_VALUE + " INTEGER, " + FIELD_DESCRIPTION
 			+ " TEXT, " + FIELD_COLOR + " INTEGER);";
-	final private String CREATE_TABLE_COLORS = "CREATE TABLE " + TABLE_COLORS
-			+ " ( id INTEGER PRIMARY KEY AUTOINCREMENT, " + FIELD_COLOR
-			+ " INTEGER, " + FIELD_ENABLED + " INTEGER);";
 	final private String DROP_TABLE_EVENTS = "DROP TABLE " + TABLE_EVENTS;
-	final private String DROP_TABLE_COLORS = "DROP TABLE " + TABLE_COLORS;
+	final private int START_ACTIVITY_PREFERENCES = 1;
 
 	// Bundle
 	final private String BUNDLE_SELECTED_COLOR = "selectedColor";
@@ -144,6 +143,11 @@ public class MainActivity extends Activity implements Rules {
 			updateUi();
 			updateScores();
 		}
+	}
+
+	private void preferences() {
+		Intent intent = new Intent(this, Preferences.class);
+		startActivityForResult(intent, START_ACTIVITY_PREFERENCES);
 	}
 
 	private void help() {
@@ -376,6 +380,9 @@ public class MainActivity extends Activity implements Rules {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		}
 
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, true);
+		PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
+
 		scoreEvents = new LinkedList<ScoreEvent>();
 
 		colorStrings = new HashMap<Integer, String>();
@@ -385,9 +392,7 @@ public class MainActivity extends Activity implements Rules {
 		}
 
 		colorEnabled = new HashMap<Integer, Boolean>();
-		for (int color : colors) {
-			colorEnabled.put(color, true);
-		}
+		readPreferences();
 
 		// Color buttons
 		colorButtons = new HashMap<Integer, ToggleButton>();
@@ -500,6 +505,13 @@ public class MainActivity extends Activity implements Rules {
 	}
 
 	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+
+		PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+	}
+
+	@Override
 	public void onPause() {
 		super.onPause();
 		write();
@@ -553,6 +565,9 @@ public class MainActivity extends Activity implements Rules {
 		case R.id.redo:
 			redo();
 			return true;
+		case R.id.preferences:
+			preferences();
+			return true;
 		case R.id.help:
 			help();
 			return true;
@@ -571,6 +586,17 @@ public class MainActivity extends Activity implements Rules {
 			}
 		}
 	};
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		//Log.d(TAG, "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode + ", intent=" + intent);
+		super.onActivityResult(requestCode, resultCode, intent);
+
+		if (requestCode == START_ACTIVITY_PREFERENCES) {
+			readPreferences();
+			updateUi();
+		}
+	}
 
 	private void saveUi(Bundle savedInstanceState) {
 		if (savedInstanceState == null) {
@@ -631,33 +657,6 @@ public class MainActivity extends Activity implements Rules {
 		}
 
 		try {
-			// Log.v(TAG, "write drop colors table");
-			database.execSQL(DROP_TABLE_COLORS);
-		} catch (SQLiteException e) {
-			// This is fine if the table does not exist.
-			Log.i(TAG, "Colors table does not exist.");
-		}
-
-		try {
-			// Log.v(TAG, "write create colors table");
-			database.execSQL(CREATE_TABLE_COLORS);
-
-			for (int color : colors) {
-				boolean enabled = colorEnabled.get(color);
-
-				ContentValues values = new ContentValues();
-				values.put(FIELD_COLOR, color);
-				values.put(FIELD_ENABLED, enabled ? 1 : 0);
-				// Log.v(TAG, "write color: values=" + values);
-				database.insertOrThrow(TABLE_COLORS, null, values);
-			}
-		} catch (SQLiteException e) {
-			Log.e(TAG, "Failed to write colors table.");
-			e.printStackTrace();
-		} finally {
-		}
-
-		try {
 			// Log.v(TAG, "write drop events table");
 			database.execSQL(DROP_TABLE_EVENTS);
 		} catch (SQLiteException e) {
@@ -710,29 +709,6 @@ public class MainActivity extends Activity implements Rules {
 			return;
 		}
 
-		// Read colors.
-		try {
-			Cursor c = database
-					.query(TABLE_COLORS, null, null, null, null, null, null);
-			startManagingCursor(c);
-
-			c.moveToFirst();
-			while (!c.isAfterLast()) {
-				int color = c.getInt(1);
-				int enabled = c.getInt(2);
-
-				// Log.v(TAG, "read colors: color=" + color + ", enabled=" + enabled);
-				colorEnabled.put(color, enabled != 0);
-				c.moveToNext();
-			}
-
-			stopManagingCursor(c);
-			c.close();
-		} catch (SQLiteException e) {
-			// Log.d(TAG, "Failed to read colors table.");
-		} finally {
-		}
-
 		// Read score events.
 		try {
 			Cursor c = database
@@ -763,6 +739,22 @@ public class MainActivity extends Activity implements Rules {
 			// Log.v(TAG, "read close database");
 			database.close();
 		}
+	}
+
+	private void readPreferences() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+
+		for (int color : colors) {
+			String colorString = colorStrings.get(color);
+			boolean enabled = sp.getBoolean(colorString, false);
+			Log.d(TAG, "readPreferences: color=" + colorString + ", enabled=" + enabled);
+			colorEnabled.put(color, enabled);
+		}
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+		// Log.v(TAG, "onSharedPreferenceChanged: sharedPrefs=" + sharedPreferences + ", key=" + key);
 	}
 
 	private void addTestData() {

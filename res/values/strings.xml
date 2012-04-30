@@ -50,6 +50,7 @@
     <string name="new_game">New Game</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
+    <string name="preferences">Preferences</string>
     <string name="help">Help</string>
 
     <!-- UI LABELS -->
@@ -129,4 +130,13 @@
     <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_longest_train">Longest Train (+%2$d)</string>
     <string name="button_globetrotter">Globetrotter (+%2$d)</string>
+
+    <!--  PREFERENCES -->
+    <string name="redSummary">Include the red player</string>
+    <string name="greenSummary">Include the green player</string>
+    <string name="blueSummary">Include the blue player</string>
+    <string name="yellowSummary">Include the yellow player</string>
+    <string name="blackSummary">Include the black player</string>
+    <string name="purpleSummary">Include the purple player</string>
+    <string name="whiteSummary">Include the white player</string>
 </resources>

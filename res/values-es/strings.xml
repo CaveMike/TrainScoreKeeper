@@ -49,6 +49,7 @@
     <string name="new_game">Nueva Partida</string>
     <string name="undo">Deshacer</string>
     <string name="redo">Rehacer</string>
+    <string name="preferences">Preferencias</string>
     <string name="help">Ayuda</string>
 
     <!-- UI LABELS -->
@@ -128,4 +129,13 @@
     <!--  %1 is not used, %2 is a number of points. -->
     <string name="button_longest_train">Tren Largo (+%2$d)</string>
     <string name="button_globetrotter">Trotamundos (+%2$d)</string>
+
+    <!--  PREFERENCES -->
+    <string name="redSummary">Incluya el jugador rojo</string>
+    <string name="greenSummary">Incluir el jugador verde</string>
+    <string name="blueSummary">Incluya el jugador azul</string>
+    <string name="yellowSummary">Incluir el jugador amarillo</string>
+    <string name="blackSummary">Incluir el jugador negro</string>
+    <string name="purpleSummary">Incluya el jugador morado</string>
+    <string name="whiteSummary">Incluya el jugador blanco</string>
 </resources>

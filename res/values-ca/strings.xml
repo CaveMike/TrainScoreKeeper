@@ -72,6 +72,7 @@
     <string name="yellow">Groc</string>
     <string name="black">Negre</string>
     <string name="purple">Porpra</string>
+    <string name="white">Blanc</string>
 
     <!--  %1 is a player's color (listed above),
           %2 is an action (listed below),

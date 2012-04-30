@@ -80,6 +80,17 @@
             android:textColor="@color/White"
             android:textOff=""
             android:textOn="" />
+
+        <ToggleButton
+            android:id="@+id/buttonWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/white_button"
+            android:padding="10dip"
+            android:textColor="@color/Black"
+            android:textOff=""
+            android:textOn="" />
     </LinearLayout>
 
     <TextView

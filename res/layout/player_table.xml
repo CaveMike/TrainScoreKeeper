@@ -215,4 +215,34 @@
             android:text="" />
     </TableRow>
 
+    <TableRow >
+
+        <ToggleButton
+            android:id="@+id/buttonWhite"
+            style="@style/PlayerTableText"
+            android:layout_height="fill_parent"
+            android:background="@drawable/white_button"
+            android:textColor="@color/Black"
+            android:textOff=""
+            android:textOn="" />
+
+        <TextView
+            style="@style/PlayerTableText"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="" />
+
+        <TextView
+            style="@style/PlayerTableText"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="" />
+
+        <TextView
+            style="@style/PlayerTableText"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="" />
+    </TableRow>
+
 </TableLayout>

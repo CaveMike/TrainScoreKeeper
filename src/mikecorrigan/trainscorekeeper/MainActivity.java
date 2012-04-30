@@ -57,9 +57,9 @@ public class MainActivity extends Activity implements Rules {
 	private int lastScoreEvent;
 
 	final static int[] colors = { R.id.buttonRed, R.id.buttonGreen,
-		R.id.buttonBlue, R.id.buttonYellow, R.id.buttonBlack, R.id.buttonPurple };
+		R.id.buttonBlue, R.id.buttonYellow, R.id.buttonBlack, R.id.buttonPurple, R.id.buttonWhite };
 	final static int[] colorStringIds = { R.string.red, R.string.green,
-		R.string.blue, R.string.yellow, R.string.black, R.string.purple };
+		R.string.blue, R.string.yellow, R.string.black, R.string.purple, R.string.white };
 	private Map<Integer, String> colorStrings;
 
 	// UI

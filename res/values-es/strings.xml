@@ -72,6 +72,7 @@
     <string name="yellow">Amarillo</string>
     <string name="black">Negro</string>
     <string name="purple">Morado</string>
+    <string name="white">Blanco</string>
 
     <!--  %1 is a player's color (listed above),
           %2 is an action (listed below),

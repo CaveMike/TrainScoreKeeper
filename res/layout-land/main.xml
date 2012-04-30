@@ -90,6 +90,19 @@
             android:textOff=""
             android:textOn="" />
 
+        <ToggleButton
+            android:id="@+id/buttonWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_button"
+            android:paddingBottom="10dip"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip"
+            android:paddingTop="10dip"
+            android:textColor="@color/Black"
+            android:textOff=""
+            android:textOn="" />
+
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="0dip"

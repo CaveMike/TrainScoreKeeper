@@ -163,16 +163,25 @@ public class MainActivity extends Activity implements Rules, OnSharedPreferenceC
 		final boolean enabledA = selectedColor != -1;
 
 		for (int color : colors) {
-			// Skip colors that are disabled.
-			if (!colorEnabled.get(color)) {
-				colorButtons.get(color).setVisibility(View.GONE);
+			ToggleButton colorButton = colorButtons.get(color);
+			View parent = (View) colorButton.getParent();
+
+			final int visibleD = colorEnabled.get(color) ? View.VISIBLE : View.GONE;
+
+			if (parent instanceof TableRow) {
+				parent.setVisibility(visibleD);
+			} else {
+				colorButton.setVisibility(visibleD);
+			}
+
+			if (visibleD == View.GONE ) {
 				continue;
 			}
 
 			if (color != selectedColor) {
-				colorButtons.get(color).setVisibility(visibleC);
+				colorButton.setVisibility(visibleC);
 			}
-			colorButtons.get(color).setText(Integer.toString(getScore(color)));
+			colorButton.setText(Integer.toString(getScore(color)));
 		}
 
 		enableGridView(gridViewTrains, enabledA);

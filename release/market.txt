@@ -26,6 +26,7 @@ This app is not affiliated or endorsed by Days of Wonder, Inc.  Ticket to Ride U
 ----
 Recent Changes (500):
 ----
+Version 8: Added preferences page to select player colors.  Add support for 9-car train.
 Version 7: Added scroll bar to history.  Added purple player.
 Version 6: Added the Globetrotter bonus.
 Version 5: Added Catalan and Spanish translations.

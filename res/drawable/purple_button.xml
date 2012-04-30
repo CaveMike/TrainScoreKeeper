@@ -16,7 +16,7 @@
                 android:height="10dp" />
             <stroke
                 android:width="6dp"
-                android:color="@color/Yellow" />
+                android:color="@color/Purple" />
         </shape>
     </item>
     <item>

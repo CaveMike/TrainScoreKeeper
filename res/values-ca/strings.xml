@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--  Notes to translator:
+
+    <!--
+          Notes to translator:
         1. 'Train Score Keeper' is a product name and should not be translated.
 
         2. Only text in the contents of <string> and <item> should be translated.  Ignore text in
@@ -23,33 +25,35 @@
         See also: http://developer.android.com/guide/topics/resources/string-resource.html
     -->
 
-    <!--  APP TITLES -->
-    <string name="app_name">Train Score Keeper</string>
-    <string name="app_short_name">Train Score Keeper</string>
 
-    <!-- ABOUT
-         This is used for the About box dialog that lists app details. -->
+    <!--
+         ABOUT
+         This is used for the About box dialog that lists app details.
+    -->
     <string name="about_title">Sobre</string>
     <string name="about_positive">OK</string>
     <string name="about_neutral">Mercat</string>
     <string name="about_negative">Web</string>
 
-    <!-- EULA
-         The EULA is an end-user software license. -->
+    <!--
+         EULA
+         The EULA is an end-user software license.
+    -->
     <string name="eula_title">Llicència</string>
     <string name="eula_accept">Acceptar</string>
     <string name="eula_refuse">Rebutjar</string>
 
-    <!--  Dialog prompt and buttons for quitting the current game and starting a new game. -->
+    <!-- Dialog prompt and buttons for quitting the current game and starting a new game. -->
     <string name="new_game_prompt">Estàs segur que vols sortir? Totes les teves dades es borraran.</string>
     <string name="yes">Si­</string>
     <string name="no">No</string>
 
-    <!--  MENU ITEMS -->
+    <!-- MENU ITEMS -->
     <string name="new_game">Nova Partida</string>
     <string name="undo">Desfer</string>
     <string name="redo">Refer</string>
     <string name="preferences">Preferències</string>
+    <string name="preferences_summary" formatted="false">Inclogui el jugador %1$s</string>
     <string name="help">Ajuda</string>
 
     <!-- UI LABELS -->
@@ -61,81 +65,11 @@
     <string name="bonuses">Bons</string>
     <string name="history">Història</string>
 
-    <!--  Checkbox that indicates the game is done or complete. -->
-    <string name="done">Complet</string>
-    <string name="done_long">Volta completa Última</string>
-
-    <!--  PLAYER'S COLOR.
-          These refer to a player by his color.  'Red' means 'the red player'. -->
-    <string name="red">Vermell</string>
-    <string name="green">Verd</string>
-    <string name="blue">Blau</string>
-    <string name="yellow">Groc</string>
-    <string name="black">Negre</string>
-    <string name="purple">Porpra</string>
-    <string name="white">Blanc</string>
-
-    <!--  %1 is a player's color (listed above),
+    <!--
+          %1 is a player's color (listed above),
           %2 is an action (listed below),
-          %3 is a player's score. -->
+          %3 is a player's score.
+    -->
     <string name="history_entry" formatted="false">%1$s %2$s fent un total de %3$d.\n</string>
 
-    <!--  ACTIONS -->
-
-    <!--  %1 is a number of train cars, %2 is a number of points. -->
-    <plurals name="history_train">
-        <item quantity="one" >va construir un vagó de tren per valor de %2$d</item>
-        <item quantity="other" >va construir %1$s vagons de tren per valor de %2$d</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="history_contract_completed">ha finalitzat un contrate per valor de %2$d</string>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="history_contract_missed">ha fallat en la finalització d\'un contracte per valor de %2$d</string>
-
-    <!--  %1 is a bonus listed below, %2 is a number of points. -->
-    <string name="history_bonus">va rebre %1$s per valor de %2$d</string>
-
-    <!-- %1 is a number of stations, %2 is a number of points. -->
-    <plurals name="history_station">
-        <item quantity="one">li varen quedar %1$s estació per valor de %2$d</item>
-        <item quantity="other">li varen quedar %1$s estacions per valor de %2$d</item>
-    </plurals>
-
-    <!--  BONUSES -->
-    <string name="history_longest_train">El tren més llarg</string>
-    <string name="history_globetrotter">Rodamón</string>
-
-    <!--  BUTTON TEXT -->
-    <!--  %1 is a number of train cars, %2 is a number of points. -->
-    <plurals name="button_trains">
-        <item quantity="one">%1$d tren (+%2$d)</item>
-        <item quantity="other">%1$d trens (+%2$d)</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_complete">+%2$d</string>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_missed">%2$d</string>
-
-    <!--  %1 is a number of train stations, %2 is a number of points. -->
-    <plurals name="button_train_stations">
-        <item quantity="one">%1$d estació (+%2$d)</item>
-        <item quantity="other">%1$d estacions (+%2$d)</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_longest_train">Tren Llarg (+%2$d)</string>
-    <string name="button_globetrotter">Rodamón (+%2$d)</string>
-
-    <!--  PREFERENCES -->
-    <string name="redSummary">Inclogui el jugador vermell</string>
-    <string name="greenSummary">Incloure el jugador verd</string>
-    <string name="blueSummary">Inclogui el jugador blau</string>
-    <string name="yellowSummary">Incloure el jugador groc</string>
-    <string name="blackSummary">Incloure el jugador negre</string>
-    <string name="purpleSummary">Inclogui el jugador morat</string>
-    <string name="whiteSummary">Inclogui el jugador blanc</string>
 </resources>

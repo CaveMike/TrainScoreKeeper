@@ -8,15 +8,15 @@
             <corners
                 android:radius="4dp" />
             <gradient
-                android:endColor="@color/Red"
-                android:startColor="@color/DarkRed"
+                android:endColor="@color/DarkOrange"
+                android:startColor="@color/Orange"
                 android:angle="180" />
             <size
                 android:width="10dp"
                 android:height="10dp" />
             <stroke
                 android:width="6dp"
-                android:color="@color/DarkRed" />
+                android:color="@color/DarkOrange" />
         </shape>
     </item>
     <item>
@@ -25,8 +25,8 @@
             <corners
                 android:radius="4dp" />
             <gradient
-                android:endColor="@color/Red"
-                android:startColor="@color/DarkRed"
+                android:endColor="@color/DarkOrange"
+                android:startColor="@color/Orange"
                 android:angle="180" />
             <padding
                 android:left="0dp"
@@ -38,7 +38,7 @@
                 android:height="10dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/DarkGray" />
+                android:color="@color/DarkOrange" />
         </shape>
     </item>
 </selector>

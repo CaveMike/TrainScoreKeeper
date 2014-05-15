@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--  Notes to translator:
+
+    <!--
+          Notes to translator:
         1. 'Train Score Keeper' is a product name and should not be translated.
 
         2. Only text in the contents of <string> and <item> should be translated.  Ignore text in
@@ -23,33 +25,35 @@
         See also: http://developer.android.com/guide/topics/resources/string-resource.html
     -->
 
-    <!--  APP TITLES -->
-    <string name="app_name">Train Score Keeper</string>
-    <string name="app_short_name">Train Score Keeper</string>
 
-    <!-- ABOUT
-         This is used for the About box dialog that lists app details. -->
+    <!--
+         ABOUT
+         This is used for the About box dialog that lists app details.
+    -->
     <string name="about_title">Acerca</string>
     <string name="about_positive">OK</string>
     <string name="about_neutral">Mercado</string>
     <string name="about_negative">Web</string>
 
-    <!-- EULA
-         The EULA is an end-user software license. -->
+    <!--
+         EULA
+         The EULA is an end-user software license.
+    -->
     <string name="eula_title">Licencia</string>
     <string name="eula_accept">Aceptar</string>
     <string name="eula_refuse">Rechazar</string>
 
-    <!--  Dialog prompt and buttons for quitting the current game and starting a new game. -->
+    <!-- Dialog prompt and buttons for quitting the current game and starting a new game. -->
     <string name="new_game_prompt">Estás seguro que quieres salir? Todos los datos se borrarán.</string>
     <string name="yes">Si­</string>
     <string name="no">No</string>
 
-    <!--  MENU ITEMS -->
+    <!-- MENU ITEMS -->
     <string name="new_game">Nueva Partida</string>
     <string name="undo">Deshacer</string>
     <string name="redo">Rehacer</string>
     <string name="preferences">Preferencias</string>
+    <string name="preferences_summary" formatted="false">Incluya el jugador %1$s</string>
     <string name="help">Ayuda</string>
 
     <!-- UI LABELS -->
@@ -61,81 +65,11 @@
     <string name="bonuses">Primas</string>
     <string name="history">Historia</string>
 
-    <!--  Checkbox that indicates the game is done or complete. -->
-    <string name="done">Completa</string>
-    <string name="done_long">Última vuelta completa</string>
-
-    <!--  PLAYER'S COLOR.
-          These refer to a player by his color.  'Red' means 'the red player'. -->
-    <string name="red">Rojo</string>
-    <string name="green">Verde</string>
-    <string name="blue">Azul</string>
-    <string name="yellow">Amarillo</string>
-    <string name="black">Negro</string>
-    <string name="purple">Morado</string>
-    <string name="white">Blanco</string>
-
-    <!--  %1 is a player's color (listed above),
+    <!--
+          %1 is a player's color (listed above),
           %2 is an action (listed below),
-          %3 is a player's score. -->
+          %3 is a player's score.
+    -->
     <string name="history_entry" formatted="false">%1$s %2$s haciendo un total de %3$d.\n</string>
 
-    <!--  ACTIONS -->
-
-    <!--  %1 is a number of train cars, %2 is a number of points. -->
-    <plurals name="history_train">
-        <item quantity="one" >construyó un vagón de tren por valor de %2$d</item>
-        <item quantity="other" >construyó %1$s vagones de tren por valor de %2$d</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="history_contract_completed">ha finalizado un contrato por valor de %2$d</string>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="history_contract_missed">ha fallado al finalizar un contrato por valor de %2$d</string>
-
-    <!--  %1 is a bonus listed below, %2 is a number of points. -->
-    <string name="history_bonus">recibió %1$s por valor de %2$d</string>
-
-    <!-- %1 is a number of stations, %2 is a number of points. -->
-    <plurals name="history_station">
-        <item quantity="one">le quedó %1$s estación por valor de %2$d</item>
-        <item quantity="other">le quedaron %1$s estaciones por valor de %2$d</item>
-    </plurals>
-
-    <!--  BONUSES -->
-    <string name="history_longest_train">El tren más largo</string>
-    <string name="history_globetrotter">Trotamundos</string>
-
-    <!--  BUTTON TEXT -->
-    <!--  %1 is a number of train cars, %2 is a number of points. -->
-    <plurals name="button_trains">
-        <item quantity="one">%1$d tren (+%2$d)</item>
-        <item quantity="other">%1$d trenes (+%2$d)</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_complete">+%2$d</string>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_missed">%2$d</string>
-
-    <!--  %1 is a number of train stations, %2 is a number of points. -->
-    <plurals name="button_train_stations">
-        <item quantity="one">%1$d estación (+%2$d)</item>
-        <item quantity="other">%1$d estaciones (+%2$d)</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_longest_train">Tren Largo (+%2$d)</string>
-    <string name="button_globetrotter">Trotamundos (+%2$d)</string>
-
-    <!--  PREFERENCES -->
-    <string name="redSummary">Incluya el jugador rojo</string>
-    <string name="greenSummary">Incluir el jugador verde</string>
-    <string name="blueSummary">Incluya el jugador azul</string>
-    <string name="yellowSummary">Incluir el jugador amarillo</string>
-    <string name="blackSummary">Incluir el jugador negro</string>
-    <string name="purpleSummary">Incluya el jugador morado</string>
-    <string name="whiteSummary">Incluya el jugador blanco</string>
 </resources>

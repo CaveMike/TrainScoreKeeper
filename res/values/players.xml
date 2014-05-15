@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="playerNames">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>White</item>
+        <item>Gray</item>
+        <item>Black</item>
+    </string-array>
+
+    <array name="playerDrawables">
+        <item>@drawable/red_button</item>
+        <item>@drawable/orange_button</item>
+        <item>@drawable/yellow_button</item>
+        <item>@drawable/green_button</item>
+        <item>@drawable/blue_button</item>
+        <item>@drawable/purple_button</item>
+        <item>@drawable/white_button</item>
+        <item>@drawable/gray_button</item>
+        <item>@drawable/black_button</item>
+    </array>
+    <array name="playerTextColors">
+        <item>@color/White</item>
+        <item>@color/White</item>
+        <item>@color/Black</item>
+        <item>@color/White</item>
+        <item>@color/White</item>
+        <item>@color/White</item>
+        <item>@color/Black</item>
+        <item>@color/White</item>
+        <item>@color/White</item>
+    </array>
+
+</resources>

@@ -1,0 +1,512 @@
+{
+  "tabs": [
+    {
+      "sections": [
+        {
+          "columns": 3,
+          "buttons": [
+            {
+              "value": 1,
+              "history": "built a train car worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "1 Car (+1)"
+            },
+            {
+              "value": 2,
+              "history": "built 2 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "2 Cars (+2)"
+            },
+            {
+              "value": 4,
+              "history": "built 3 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "3 Cars (+4)"
+            },
+            {
+              "value": 7,
+              "history": "built 4 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "4 Cars (+7)"
+            },
+            {
+              "value": 10,
+              "history": "built 5 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "5 Cars (+10)"
+            },
+            {
+              "value": 15,
+              "history": "built 6 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "6 Cars (+15)"
+            },
+            {
+              "value": 18,
+              "history": "built 7 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "7 Cars (+18)"
+            },
+            {
+              "value": 21,
+              "history": "built 8 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "8 Cars (+21)"
+            },
+            {
+              "value": 27,
+              "history": "built 9 train cars worth %2$d",
+              "type": 0,
+              "description": "",
+              "name": "9 Cars (+27)"
+            }
+          ],
+          "name": "Number of Cars"
+        }
+      ],
+      "name": "Trains"
+    },
+    {
+      "sections": [
+        {
+          "columns": 4,
+          "buttons": [
+            {
+              "value": 1,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+1"
+            },
+            {
+              "value": 2,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+2"
+            },
+            {
+              "value": 3,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+3"
+            },
+            {
+              "value": 4,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+4"
+            },
+            {
+              "value": 5,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+5"
+            },
+            {
+              "value": 6,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+6"
+            },
+            {
+              "value": 7,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+7"
+            },
+            {
+              "value": 8,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+8"
+            },
+            {
+              "value": 9,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+9"
+            },
+            {
+              "value": 10,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+10"
+            },
+            {
+              "value": 11,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+11"
+            },
+            {
+              "value": 12,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+12"
+            },
+            {
+              "value": 13,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+13"
+            },
+            {
+              "value": 14,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+14"
+            },
+            {
+              "value": 15,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+15"
+            },
+            {
+              "value": 16,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+16"
+            },
+            {
+              "value": 17,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+17"
+            },
+            {
+              "value": 18,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+18"
+            },
+            {
+              "value": 19,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+19"
+            },
+            {
+              "value": 20,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+20"
+            },
+            {
+              "value": 21,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+21"
+            },
+            {
+              "value": 22,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+22"
+            },
+            {
+              "value": 23,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+23"
+            },
+            {
+              "value": 24,
+              "history": "completed a contract worth %2$d",
+              "type": 1,
+              "description": "",
+              "name": "+24"
+            }
+          ],
+          "name": "Completed Contract"
+        }
+      ],
+      "name": "Completed"
+    },
+    {
+      "sections": [
+        {
+          "columns": 4,
+          "buttons": [
+            {
+              "value": -1,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-1"
+            },
+            {
+              "value": -2,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-2"
+            },
+            {
+              "value": -3,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-3"
+            },
+            {
+              "value": -4,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-4"
+            },
+            {
+              "value": -5,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-5"
+            },
+            {
+              "value": -6,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-6"
+            },
+            {
+              "value": -7,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-7"
+            },
+            {
+              "value": -8,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-8"
+            },
+            {
+              "value": -9,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-9"
+            },
+            {
+              "value": -10,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-10"
+            },
+            {
+              "value": -11,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-11"
+            },
+            {
+              "value": -12,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-12"
+            },
+            {
+              "value": -13,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-13"
+            },
+            {
+              "value": -14,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-14"
+            },
+            {
+              "value": -15,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-15"
+            },
+            {
+              "value": -16,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-16"
+            },
+            {
+              "value": -17,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-17"
+            },
+            {
+              "value": -18,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-18"
+            },
+            {
+              "value": -19,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-19"
+            },
+            {
+              "value": -20,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-20"
+            },
+            {
+              "value": -21,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-21"
+            },
+            {
+              "value": -22,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-22"
+            },
+            {
+              "value": -23,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-23"
+            },
+            {
+              "value": -24,
+              "history": "failed to complete a contract worth %2$d",
+              "type": 2,
+              "description": "",
+              "name": "-24"
+            }
+          ],
+          "name": "Missed Contract"
+        }
+      ],
+      "name": "Missed"
+    },
+    {
+      "sections": [
+        {
+          "columns": 3,
+          "buttons": [
+            {
+              "value": 4,
+              "history": "had 1 station remaining worth %2$d",
+              "type": 3,
+              "description": "",
+              "name": "1 Stations (+4)"
+            },
+            {
+              "value": 8,
+              "history": "had 2 stations remaining worth %2$d",
+              "type": 3,
+              "description": "",
+              "name": "2 Stations (+8)"
+            },
+            {
+              "value": 12,
+              "history": "had 3 stations remaining worth %2$d",
+              "type": 3,
+              "description": "",
+              "name": "3 Stations (+12)"
+            }
+          ],
+          "name": "Stations Remaining"
+        },
+        {
+          "columns": 2,
+          "buttons": [
+            {
+              "value": 10,
+              "history": "received Longest Train worth %2$d",
+              "type": 4,
+              "description": "",
+              "name": "Longest Train (+10)"
+            },
+            {
+              "value": 15,
+              "history": "received Globe Trotter worth %2$d",
+              "type": 4,
+              "description": "",
+              "name": "Globe Trotter (+15)"
+            },
+            {
+              "value": 10,
+              "history": "received European Express worth %2$d",
+              "type": 4,
+              "description": "",
+              "name": "European Express (+10)"
+            },
+            {
+              "value": 15,
+              "history": "moved Alvin the most, worth %2$d",
+              "type": 4,
+              "description": "",
+              "name": "Alvin Bonus (+15)"
+            },
+            {
+              "value": 15,
+              "history": "moved Dexter the most, worth %2$d",
+              "type": 4,
+              "description": "",
+              "name": "Dexter Bonus (+15)"
+            }
+          ],
+          "name": "Misc"
+        }
+      ],
+      "name": "Bonus"
+    }
+  ],
+  "name": "Kitchen Sink",
+  "description": "Kitchen Sink: Everything in one ruleset",
+  "players": ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "White", "Gray", "Black"]
+}

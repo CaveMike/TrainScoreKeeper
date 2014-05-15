@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="playerNames">
+        <item>Vermell</item>
+        <item>Taronja</item>
+        <item>Groc</item>
+        <item>Verd</item>
+        <item>Blau</item>
+        <item>Porpra</item>
+        <item>Blanc</item>
+        <item>Gris-</item>
+        <item>Negre</item>
+    </string-array>
+
+</resources>

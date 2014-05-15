@@ -6,23 +6,31 @@
 
     <uses-sdk
         android:minSdkVersion="4"
-        android:targetSdkVersion="11" />
+        android:targetSdkVersion="21" />
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
         <activity
-            android:name="mikecorrigan.trainscorekeeper.MainActivity"
+            android:name="com.mikecorrigan.trainscorekeeper.MainActivity"
+            android:label="@string/app_short_name"
+            android:theme="@style/Theme.AppCompat.Light" >
+        </activity>
+        <activity
+            android:name="com.mikecorrigan.trainscorekeeper.Preferences"
             android:label="@string/app_short_name" >
+        </activity>
+        <activity
+            android:name="com.mikecorrigan.trainscorekeeper.ActivityNewGame"
+            android:label="@string/app_short_name" >
+            android:theme="@style/Theme.AppCompat.Light" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="mikecorrigan.trainscorekeeper.Preferences"
-            android:label="@string/app_short_name" >
         </activity>
     </application>
 

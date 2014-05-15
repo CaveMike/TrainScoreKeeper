@@ -1,55 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="Preferences" >
-
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="@string/red"
-        android:persistent="true"
-        android:summary="@string/redSummary"
-        android:title="@string/red" >
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="@string/green"
-        android:persistent="true"
-        android:summary="@string/greenSummary"
-        android:title="@string/green" >
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="@string/blue"
-        android:persistent="true"
-        android:summary="@string/blueSummary"
-        android:title="@string/blue" >
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="@string/yellow"
-        android:persistent="true"
-        android:summary="@string/yellowSummary"
-        android:title="@string/yellow" >
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="@string/black"
-        android:persistent="true"
-        android:summary="@string/blackSummary"
-        android:title="@string/black" >
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="@string/white"
-        android:persistent="true"
-        android:summary="@string/whiteSummary"
-        android:title="@string/white" >
-    </CheckBoxPreference>
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="@string/purple"
-        android:persistent="true"
-        android:summary="@string/purpleSummary"
-        android:title="@string/purple" >
-    </CheckBoxPreference>
+    android:title="@string/preferences" >
 
 </PreferenceScreen>

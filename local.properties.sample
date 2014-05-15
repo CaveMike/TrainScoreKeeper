@@ -1,0 +1,3 @@
+# Location of the SDK. This is only used by Ant
+sdk.dir=
+ndk.dir=

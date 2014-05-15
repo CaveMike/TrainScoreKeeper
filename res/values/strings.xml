@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--  Notes to translator:
+
+    <!--
+          Notes to translator:
         1. 'Train Score Keeper' is a product name and should not be translated.  'Score Keeper'
            should be translated.
 
@@ -24,119 +26,56 @@
         See also: http://developer.android.com/guide/topics/resources/string-resource.html
     -->
 
-    <!--  APP TITLES -->
-    <string name="app_name">Train Score Keeper</string>
-    <string name="app_short_name">Train Score Keeper</string>
 
-    <!-- ABOUT
-         This is used for the About box dialog that lists app details. -->
+    <!-- APP TITLES -->
+    <string name="app_name" translatable="false">Train Score Keeper</string>
+    <string name="app_short_name" translatable="false">Train Score Keeper</string>
+
+    <!--
+         ABOUT
+         This is used for the About box dialog that lists app details.
+    -->
     <string name="about_title">About</string>
     <string name="about_positive">OK</string>
     <string name="about_neutral">Market</string>
     <string name="about_negative">Web</string>
 
-    <!-- EULA
-         The EULA is an end-user software license. -->
+    <!--
+         EULA
+         The EULA is an end-user software license.
+    -->
     <string name="eula_title">License</string>
     <string name="eula_accept">Accept</string>
     <string name="eula_refuse">Refuse</string>
 
-    <!--  Dialog prompt and buttons for quitting the current game and starting a new game. -->
+    <!-- Dialog prompt and buttons for quitting the current game and starting a new game. -->
     <string name="new_game_prompt">Are you sure you want to start a new game?  All existing data will be lost.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
 
-    <!--  MENU ITEMS -->
+    <!-- MENU ITEMS -->
     <string name="new_game">New Game</string>
     <string name="undo">Undo</string>
     <string name="redo">Redo</string>
     <string name="preferences">Preferences</string>
+    <string name="preferences_summary" formatted="false">Include the %1$s player</string>
     <string name="help">Help</string>
 
     <!-- UI LABELS -->
     <string name="player">Player</string>
     <string name="trains">Trains</string>
     <string name="contracts">Contracts</string>
+    <string name="bonuses">Bonuses</string>
     <string name="contracts_completed">Contracts Completed</string>
     <string name="contracts_missed">Contracts Missed</string>
-    <string name="bonuses">Bonuses</string>
     <string name="history">History</string>
+    <string name="summary">Summary</string>
 
-    <!--  Checkbox that indicates the game is done or complete. -->
-    <string name="done">Done</string>
-    <string name="done_long">Last Turn Complete</string>
-
-    <!--  PLAYER'S COLOR.
-          These refer to a player by his color.  'Red' means 'the red player'. -->
-    <string name="red">Red</string>
-    <string name="green">Green</string>
-    <string name="blue">Blue</string>
-    <string name="yellow">Yellow</string>
-    <string name="black">Black</string>
-    <string name="purple">Purple</string>
-    <string name="white">White</string>
-
-    <!--  %1 is a player's color (listed above),
-          %2 is an action (listed below),
-          %3 is a player's score. -->
+    <!--
+          %1 is a player's name,
+          %2 is an action,
+          %3 is a player's score.
+    -->
     <string name="history_entry" formatted="false">%1$s %2$s for a new total of %3$d.\n</string>
 
-    <!--  ACTIONS -->
-
-    <!--  %1 is a number of train cars, %2 is a number of points. -->
-    <plurals name="history_train">
-        <item quantity="one" >built a train car worth %2$d</item>
-        <item quantity="other" >built %1$s train cars worth %2$d</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="history_contract_completed">completed a contract worth %2$d</string>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="history_contract_missed">failed to complete a contract worth %2$d</string>
-
-    <!--  %1 is a bonus listed below, %2 is a number of points. -->
-    <string name="history_bonus">received %1$s worth %2$d</string>
-
-    <!-- %1 is a number of stations, %2 is a number of points. -->
-    <plurals name="history_station">
-        <item quantity="one">had %1$s station remaining worth %2$d</item>
-        <item quantity="other">had %1$s stations remaining worth %2$d</item>
-    </plurals>
-
-    <!--  BONUSES -->
-    <string name="history_longest_train">Longest Train</string>
-    <string name="history_globetrotter">Globetrotter</string>
-
-    <!--  BUTTON TEXT -->
-    <!--  %1 is a number of train cars, %2 is a number of points. -->
-    <plurals name="button_trains">
-        <item quantity="one">%1$d train (+%2$d)</item>
-        <item quantity="other">%1$d trains (+%2$d)</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_complete">+%2$d</string>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_contracts_missed">%2$d</string>
-
-    <!--  %1 is a number of train stations, %2 is a number of points. -->
-    <plurals name="button_train_stations">
-        <item quantity="one">%1$d station (+%2$d)</item>
-        <item quantity="other">%1$d stations (+%2$d)</item>
-    </plurals>
-
-    <!--  %1 is not used, %2 is a number of points. -->
-    <string name="button_longest_train">Longest Train (+%2$d)</string>
-    <string name="button_globetrotter">Globetrotter (+%2$d)</string>
-
-    <!--  PREFERENCES -->
-    <string name="redSummary">Include the red player</string>
-    <string name="greenSummary">Include the green player</string>
-    <string name="blueSummary">Include the blue player</string>
-    <string name="yellowSummary">Include the yellow player</string>
-    <string name="blackSummary">Include the black player</string>
-    <string name="purpleSummary">Include the purple player</string>
-    <string name="whiteSummary">Include the white player</string>
 </resources>

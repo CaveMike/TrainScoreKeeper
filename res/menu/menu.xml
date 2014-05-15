@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mikecorrigan.trainscorekeeper.MainActivity" >
+
     <item
         android:id="@+id/new_game"
+        app:showAsAction=""
         android:icon="@drawable/ic_menu_add"
         android:title="@string/new_game"/>
     <item
         android:id="@+id/undo"
+        app:showAsAction=""
         android:icon="@drawable/ic_menu_back"
         android:title="@string/undo"/>
     <item
         android:id="@+id/redo"
+        app:showAsAction=""
         android:icon="@drawable/ic_menu_forward"
         android:title="@string/redo"/>
     <item
         android:id="@+id/preferences"
+        app:showAsAction=""
         android:icon="@drawable/ic_menu_preferences"
         android:title="@string/preferences"/>
     <item
         android:id="@+id/help"
+        app:showAsAction=""
         android:icon="@drawable/ic_menu_help"
         android:title="@string/help"/>
 </menu>
